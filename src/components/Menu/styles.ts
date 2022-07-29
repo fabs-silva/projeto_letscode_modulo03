@@ -4,6 +4,7 @@ import { variables } from '../../styles/variables';
 const { colors, fonts, fontWeight, fontSizes } = variables;
 
 const MenuContainer = styled.aside`
+  grid-area: menu;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -13,21 +14,31 @@ const MenuContainer = styled.aside`
   text-transform: uppercase;
 `;
 
+const MenuLogo = styled.p`
+  font-size: ${fontSizes.lg};
+  font-weight: ${fontWeight.md};
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
 const MenuGroup = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   list-style: none;
   padding: 0;
+  margin-bottom: 0.5rem;
 `;
 
 const MenuGroupTitle = styled.h2`
   font-size: ${fontSizes.xs};
   font-weight: ${fontWeight.md};
-  margin-bottom: 0.5rem;
   margin-left: 0.5rem;
   color: ${colors.accentColorLight};
 `;
 const MenuItem = styled.li`
   display: flex;
-  padding: 0.3rem 0;
   & a {
     display: flex;
     align-items: center;
@@ -47,7 +58,7 @@ const MenuButton = styled.button`
   border: 1px solid ${colors.secondaryColor};
   font-family: ${fonts.jost};
   font-size: ${fontSizes.xs};
-  font-weight: ${fontWeight.md};
+  font-weight: ${fontWeight.sm};
   text-transform: uppercase;
   margin-top: 0.5rem;
 
@@ -57,4 +68,11 @@ const MenuButton = styled.button`
   }
 `;
 
-export { MenuContainer, MenuGroup, MenuGroupTitle, MenuItem, MenuButton };
+export {
+  MenuContainer,
+  MenuLogo,
+  MenuGroup,
+  MenuGroupTitle,
+  MenuItem,
+  MenuButton,
+};

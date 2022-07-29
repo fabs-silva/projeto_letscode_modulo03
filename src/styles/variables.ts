@@ -2,6 +2,7 @@ export const variables = {
   colors: {
     primaryColor: '#443448',
     primaryColorDark: '#362939',
+    primaryColorDarker: '#2f2432',
     primaryColorLight: '#6f6173',
     secondaryColor: '#ff9933',
     secondaryColorDark: '#92381f',
@@ -31,6 +32,7 @@ export const variables = {
   },
 
   fontWeight: {
+    xs: 300,
     sm: 400,
     md: 600,
     lg: 700,

@@ -1,10 +1,19 @@
 import styled from 'styled-components';
+import { Hero } from './Hero';
 
 const MainAreaContainer = styled.main`
-  width: calc(100vw - 200px);
-  height: calc(100vh - 100px);
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  overflow-y: auto;
 `;
 
 export function MainArea() {
-  return <MainAreaContainer>MainArea</MainAreaContainer>;
+  return (
+    <MainAreaContainer>
+      <Hero /> Main Area
+    </MainAreaContainer>
+  );
 }
