@@ -1,11 +1,23 @@
+import { useState } from "react";
 import { FaRegCircle } from "react-icons/fa";
+import { TbVolume, TbVolume3 } from "react-icons/tb";
 import styled from "styled-components";
 import { variables } from "../../../styles/variables";
 
-const { colors } = variables;
+const { colors, fontSizes } = variables;
 
-const PlayerProgressBarContainer = styled.div`
-  width: 20rem;
+const PlayerVolumeContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  & svg:first-child {
+    font-size: ${fontSizes.lg};
+  }
+`;
+
+const PlayerVolumeBar = styled.div`
+  width: 4rem;
   height: 0.3rem;
   border-radius: 0.5rem;
   background-color: ${colors.accentColorLight};
@@ -33,11 +45,16 @@ const PlayerProgressBarContainer = styled.div`
   }
 `;
 
-export function PlayerProgressBar(props: { progress: number }) {
+export function PlayerVolume(props: { progress: number }) {
+  const [isMuted, setIsMuted] = useState<boolean>(false);
+
   return (
-    <PlayerProgressBarContainer>
-      <FaRegCircle />
-      <span style={{ width: `${props.progress}%` }} />
-    </PlayerProgressBarContainer>
+    <PlayerVolumeContainer>
+      {isMuted ? <TbVolume3 /> : <TbVolume />}
+      <PlayerVolumeBar>
+        <FaRegCircle />
+        <span style={{ width: `${props.progress}%` }} />
+      </PlayerVolumeBar>
+    </PlayerVolumeContainer>
   );
 }

@@ -1,19 +1,19 @@
-import styled from 'styled-components';
-import { Hero } from './Hero';
+import styled from "styled-components";
 
 const MainAreaContainer = styled.main`
   grid-area: content;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
   overflow-y: auto;
 `;
 
-export function MainArea() {
+export function MainArea(props: {
+  style: {};
+  children: JSX.Element | JSX.Element[];
+}) {
   return (
-    <MainAreaContainer>
-      <Hero /> Main Area
-    </MainAreaContainer>
+    <MainAreaContainer style={props.style}>{props.children}</MainAreaContainer>
   );
 }

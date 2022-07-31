@@ -1,17 +1,9 @@
-import styled from 'styled-components';
-import heroImage from '../../../assets/hero-image.jpg';
-import { variables } from '../../../styles/variables';
-import { Header } from '../../Header';
+import styled from "styled-components";
+import heroImage from "../../../assets/hero-image.jpg";
+import { Hero } from "../../../components/Hero";
+import { variables } from "../../../styles/variables";
 
 const { colors, fontSizes, fontWeight } = variables;
-
-const HeroContainer = styled.section`
-  display: flex;
-  background: url(${heroImage}) no-repeat fixed center left;
-  width: 100%;
-  height: 350px;
-  flex-direction: column;
-`;
 
 const HeroInfo = styled.div`
   display: flex;
@@ -43,10 +35,10 @@ const HeroInfo = styled.div`
   }
 `;
 
-export function Hero() {
+export function HeroHome() {
+  console.log(heroImage);
   return (
-    <HeroContainer>
-      <Header />
+    <Hero heroImage={heroImage} bgPositionX="10%" bgPositionY="30%">
       <HeroInfo>
         <h1>Tik Tok's hit is here!</h1>
         <h3>
@@ -54,6 +46,6 @@ export function Hero() {
         </h3>
         <button>Listen</button>
       </HeroInfo>
-    </HeroContainer>
+    </Hero>
   );
 }

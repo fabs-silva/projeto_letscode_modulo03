@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import profilePic from '../../../assets/profile-pic.jpg';
-import { variables } from '../../../styles/variables';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { variables } from "../../../styles/variables";
+import { IProfile } from "../../../types";
 
 const { colors, fontSizes, fontWeight } = variables;
 
@@ -33,14 +33,17 @@ const HeaderProfileContainer = styled.div`
   }
 `;
 
-export function HeaderProfile(props: { name: string }) {
+export function HeaderProfile(props: { user: IProfile }) {
   return (
     <HeaderProfileContainer>
       <Link to="#">
-        <img src={profilePic} alt="profile picture" />
+        <img
+          src={props.user.image}
+          alt={props.user.firstName + "-" + props.user.lastName}
+        />
       </Link>
       <p>
-        Welcome Back, <span>{props.name}</span>
+        Welcome Back, <span>{props.user.firstName}</span>
       </p>
     </HeaderProfileContainer>
   );

@@ -1,13 +1,14 @@
-import styled from 'styled-components';
-import albumImage from '../../../assets/album-image.jpg';
-import { variables } from '../../../styles/variables';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { variables } from "../../../styles/variables";
+import { ISongPlaying } from "../../../types";
 
 const { colors, fontSizes, fontWeight } = variables;
 
 const MusicInfoContainer = styled.section`
   display: flex;
   gap: 1rem;
-  width: 20%;
+  padding: 0 2rem;
   align-items: center;
   justify-content: center;
 `;
@@ -35,15 +36,23 @@ const MusicInfoArtistName = styled.p`
   font-weight: ${fontWeight.sm};
 `;
 
-export function MusicInfo() {
+export function MusicInfo(props: { song: ISongPlaying }) {
   return (
     <MusicInfoContainer>
       <MusicInfoAlbumImage>
-        <img src={albumImage} alt="Album image" />
+        <img src={props.song.image} alt={props.song.title} />
       </MusicInfoAlbumImage>
       <MusicInfoSong>
-        <MusicInfoSongTitle>O, Mamo</MusicInfoSongTitle>
-        <MusicInfoArtistName>Salto Nazad</MusicInfoArtistName>
+        <MusicInfoSongTitle>
+          <Link to="#">{props.song.title}</Link>
+        </MusicInfoSongTitle>
+        <MusicInfoArtistName>
+          {props.song.artists.map((artist: string) => (
+            <Link to="#">
+              <span>{artist}</span>
+            </Link>
+          ))}
+        </MusicInfoArtistName>
       </MusicInfoSong>
     </MusicInfoContainer>
   );

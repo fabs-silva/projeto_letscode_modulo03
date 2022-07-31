@@ -1,7 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
-import { variables } from './variables';
+import { createGlobalStyle } from "styled-components";
+import { variables } from "./variables";
 
-const { colors, fonts, fontWeight, fontSizes } = variables;
+const { colors, fonts, fontWeight } = variables;
 
 export const GlobalStyle = createGlobalStyle`
 * {

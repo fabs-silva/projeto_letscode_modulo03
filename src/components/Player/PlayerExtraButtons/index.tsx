@@ -1,20 +1,20 @@
-import { useState } from 'react';
-import { AiFillHeart, AiOutlineHeart, AiOutlineShareAlt } from 'react-icons/ai';
-import { RiPlayList2Fill } from 'react-icons/ri';
+import { useState } from "react";
+import { AiFillHeart, AiOutlineHeart, AiOutlineShareAlt } from "react-icons/ai";
+import { RiPlayList2Fill, RiPlayListAddLine } from "react-icons/ri";
 import {
   TbArrowsRight,
   TbArrowsShuffle,
   TbRepeat,
   TbRepeatOff,
-} from 'react-icons/tb';
-import styled from 'styled-components';
-import { variables } from '../../../styles/variables';
+} from "react-icons/tb";
+import styled from "styled-components";
+import { variables } from "../../../styles/variables";
 
 const { fontSizes } = variables;
 
 const PlayerExtraButtonsContainer = styled.section`
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   width: 20%;
   align-items: center;
   justify-content: center;
@@ -44,6 +44,7 @@ export function PlayerExtraButtons() {
           }}
         />
       )}
+      <RiPlayListAddLine onClick={() => {}} />
       <AiOutlineShareAlt onClick={() => {}} />
       {shuffle ? (
         <TbArrowsShuffle
