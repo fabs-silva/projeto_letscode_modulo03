@@ -9,6 +9,7 @@ import useToken from "./hooks/useToken";
 import { Album } from "./pages/Album";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
+import { Playlist } from "./pages/Playlist";
 import { SearchResults } from "./pages/SearchResults";
 import { GlobalStyle } from "./styles/globalStyles";
 import { IProfile } from "./types";
@@ -56,6 +57,7 @@ export function App() {
             <Route index element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/album" element={<Album />} />
+            <Route path="/playlist" element={<Playlist />} />
             <Route
               path="/search-results"
               element={<SearchResults searchKeyword={"Kaliopi"} />}

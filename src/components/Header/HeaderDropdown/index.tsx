@@ -5,14 +5,12 @@ import { IProfile } from "../../../types";
 
 const { colors, fontSizes, fontWeight } = variables;
 
-const HeaderDropdownContainer = styled.button`
+const HeaderDropdownContainer = styled.a`
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
   gap: 0.75rem;
-  border: none;
-  border-radius: 100%;
-  background: transparent;
+  cursor: pointer;
   position: relative;
 
   & img {
@@ -33,7 +31,7 @@ const HeaderDropdownNav = styled.nav`
   position: absolute;
   background-color: ${colors.primaryColor};
   font-size: ${fontSizes.sm};
-  padding: 1rem 2rem;
+  padding: 1rem;
   top: 35px;
   right: 5px;
   border-radius: 0.5rem;
@@ -45,10 +43,19 @@ const HeaderDropdownNav = styled.nav`
     transform: translateY(0);
   }
 
-  & button {
-    border: none;
-    border-radius: 0;
-    background: transparent;
+  & ul {
+    list-style: none;
+  }
+
+  & li {
+    width: 7rem;
+    padding: 0.75rem 0;
+    cursor: pointer;
+    text-align: center;
+
+    &:last-of-type {
+      border-top: 1px solid ${colors.primaryColorLight};
+    }
   }
 `;
 
@@ -69,7 +76,10 @@ export function HeaderDropdown(props: {
         ref={dropdownRef}
         className={isActive ? "active" : "inactive"}
       >
-        <a onClick={props.deleteToken}>Logout</a>
+        <ul>
+          <li onClick={() => {}}>Profile</li>
+          <li onClick={props.deleteToken}>Logout</li>
+        </ul>
       </HeaderDropdownNav>
     </HeaderDropdownContainer>
   );

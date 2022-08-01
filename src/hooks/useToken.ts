@@ -21,6 +21,7 @@ export default function useToken() {
 
   const deleteToken = (): void => {
     localStorage.removeItem("token");
+    localStorage.removeItem("profile");
     window.location.reload();
   };
 
