@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { variables } from "../../styles/variables";
 import { ICard } from "../../types";
@@ -33,25 +34,24 @@ const CardTitleContainer = styled.div`
 `;
 
 const CardCarouselItems = styled.section`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 1fr;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 2rem;
-
-  & :last-child {
-    align-self: flex-start;
-  }
 `;
 
 export function CardCarousel(props: {
   title: string;
   link: string;
+  seeMore: boolean;
   cardsList: ICard[];
 }) {
   return (
     <CardCarouselContainer>
       <CardTitleContainer>
         <h1>{props.title}</h1>
+        {props.seeMore ? <Link to={props.link}>See More</Link> : null}
       </CardTitleContainer>
       <CardCarouselItems>
         {props.cardsList.map((card) => {

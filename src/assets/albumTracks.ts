@@ -104,6 +104,61 @@ export const songPlaying: ISongPlaying = {
   id: "1",
   title: "О Мамо ",
   artists: ["Сальто Назад "],
-  length: 213,
+  length: 183,
   image: albumImage,
 };
+
+export const playlistInformation: IMusicItem = {
+  id: "2",
+  type: "playlist",
+  title: "Vidbir 2017 - Final",
+  image:
+    "https://i0.wp.com/escxtra.com/wp-content/uploads/vidbir-eurovision-ukraine-2020.jpg?fit=1200%2C675&ssl=1",
+  artistsOrOwner: ["Sasha Tab"],
+  numberItems: 6,
+};
+
+export const playlistTracks: ISongItem[] = [
+  {
+    id: "1",
+    track: 1,
+    title: "О, мамо!",
+    artists: ["Сальто назад"],
+    length: 183,
+  },
+  {
+    id: "2",
+    track: 2,
+    title: " Wonder",
+    artists: ["MÉLOVIN"],
+    length: 177,
+  },
+  {
+    id: "3",
+    track: 3,
+    title: " Time",
+    artists: ["O.Torvald"],
+    length: 186,
+  },
+  {
+    id: "4",
+    track: 4,
+    title: " Thank You For My Way",
+    artists: ["ILLARIA"],
+    length: 183,
+  },
+  {
+    id: "5",
+    track: 5,
+    title: " I Love You",
+    artists: ["TAYANNA"],
+    length: 183,
+  },
+  {
+    id: "6",
+    track: 6,
+    title: " Saturn",
+    artists: ["ROZHDEN"],
+    length: 175,
+  },
+];

@@ -3,8 +3,10 @@ import profileImage from "./profile-pic.jpg";
 
 export const profile: IProfile = {
   id: 1,
+  username: "sashatab",
   firstName: "Sasha",
-  lastName: "Tam",
+  lastName: "Tab",
   image: profileImage,
-  email: "sashatam@omamo.ua",
+  email: "sashatab@omamo.ua",
+  password: "123456",
 };

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { variables } from "../../styles/variables";
+import { IProfile } from "../../types";
 import { HeaderProfile } from "./HeaderProfile";
 import { HeaderSearch } from "./HeaderSearch";
-import { profile } from "../../assets/profile";
 
 const { colors } = variables;
 
@@ -15,13 +15,14 @@ const HeaderContainer = styled.header`
   grid-row: 1 / 2;
   grid-column: 2 / 3;
   z-index: 999;
+  background-color: ${colors.primaryColorDarker};
 `;
 
-export function Header() {
+export function Header(props: { profile: IProfile; deleteToken: () => void }) {
   return (
     <HeaderContainer>
       <HeaderSearch />
-      <HeaderProfile user={profile} />
+      <HeaderProfile user={props.profile} deleteToken={props.deleteToken} />
     </HeaderContainer>
   );
 }

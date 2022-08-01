@@ -1,5 +1,11 @@
+type IToken = {
+  token: string;
+};
+
 type IProfile = {
   id: number;
+  username: string;
+  password: string;
   firstName: string;
   lastName: string;
   image: string;
@@ -42,4 +48,4 @@ type ISongPlaying = {
   image: string;
 };
 
-export type { ICard, ISongItem, IMusicItem, IProfile, ISongPlaying };
+export type { IToken, ICard, ISongItem, IMusicItem, IProfile, ISongPlaying };

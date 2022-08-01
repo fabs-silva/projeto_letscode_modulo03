@@ -1,14 +1,17 @@
 import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import { Header } from "./components/Header";
 import { Menu } from "./components/Menu";
 import { Player } from "./components/Player";
+import useToken from "./hooks/useToken";
 import { Album } from "./pages/Album";
 import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
 import { SearchResults } from "./pages/SearchResults";
 import { GlobalStyle } from "./styles/globalStyles";
+import { IProfile } from "./types";
 
 const AppContainer = styled.div`
   height: 100vh;
@@ -35,23 +38,32 @@ export function App() {
     polyfillCountryFlagEmojis();
   }, []);
 
+  const [getData, setGetData] = useState<IProfile>({} as IProfile);
+
+  const { token, setToken, deleteToken } = useToken();
+
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <AppContainer>
-        <Menu />
-        <Header />
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route index element={<Home />} />
-          <Route path="/album" element={<Album />} />
-          <Route
-            path="/search-results"
-            element={<SearchResults searchKeyword={"Kaliopi"} />}
-          />
-        </Routes>
-        <Player />
-      </AppContainer>
+      {!token ? (
+        <Login setGetData={setGetData} setToken={setToken} />
+      ) : (
+        <AppContainer>
+          <Menu />
+          <Header profile={getData} deleteToken={deleteToken} />
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route index element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/album" element={<Album />} />
+            <Route
+              path="/search-results"
+              element={<SearchResults searchKeyword={"Kaliopi"} />}
+            />
+          </Routes>
+          <Player />
+        </AppContainer>
+      )}
     </BrowserRouter>
   );
 }

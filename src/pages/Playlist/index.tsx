@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { albumInformation, albumTracks } from "../../assets/albumTracks";
+import { playlistInformation, playlistTracks } from "../../assets/albumTracks";
 import { MainArea } from "../../components/MainArea";
 import { MusicInfo } from "../../components/MusicItem/MusicInfo";
 import { MusicList } from "../../components/MusicItem/MusicList";
@@ -14,12 +14,12 @@ const AlbumContainer = styled.div`
   gap: 3rem;
 `;
 
-export function Album() {
+export function Playlist() {
   return (
     <MainArea style={{ padding: "3rem 0" }}>
       <AlbumContainer>
-        <MusicInfo musicItem={albumInformation} />
-        <MusicList tracks={albumTracks} />
+        <MusicInfo musicItem={playlistInformation} />
+        <MusicList tracks={playlistTracks} />
       </AlbumContainer>
     </MainArea>
   );

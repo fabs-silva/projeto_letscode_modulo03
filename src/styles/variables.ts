@@ -15,7 +15,8 @@ export const variables = {
     mainGray: "#b7b7b7",
     lightGray: "#e7e7e7",
     darkGray: "#595959",
-    blackAlpha: "rgba(0, 0, 0, 0.1)",
+    mainRed: "#ff6666 ",
+    blackAlpha: "rgba(0, 0, 0, 0.2)",
     whiteAlpha: "rgba(255, 255, 255, 0.2)",
   },
 

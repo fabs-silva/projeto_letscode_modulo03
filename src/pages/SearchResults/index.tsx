@@ -4,11 +4,10 @@ import { MainArea } from "../../components/MainArea";
 
 export function SearchResults(props: { searchKeyword: string }) {
   return (
-    <MainArea
-      style={{ gridRow: "2 / 3", gridColumn: "2 / 4", padding: "3rem 0" }}
-    >
+    <MainArea style={{ padding: "3rem 0" }}>
       <CardCarousel
         title={`Search results for "${props.searchKeyword}"`}
+        seeMore={false}
         link="#"
         cardsList={cardsSearchArtist}
       />

@@ -47,8 +47,8 @@ export function MusicInfo(props: { song: ISongPlaying }) {
           <Link to="#">{props.song.title}</Link>
         </MusicInfoSongTitle>
         <MusicInfoArtistName>
-          {props.song.artists.map((artist: string) => (
-            <Link to="#">
+          {props.song.artists.map((artist: string, i: number) => (
+            <Link to="#" key={i}>
               <span>{artist}</span>
             </Link>
           ))}

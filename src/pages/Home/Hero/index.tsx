@@ -36,7 +36,6 @@ const HeroInfo = styled.div`
 `;
 
 export function HeroHome() {
-  console.log(heroImage);
   return (
     <Hero heroImage={heroImage} bgPositionX="10%" bgPositionY="30%">
       <HeroInfo>

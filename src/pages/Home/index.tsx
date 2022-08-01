@@ -5,18 +5,18 @@ import { HeroHome } from "./Hero";
 
 export function Home() {
   return (
-    <MainArea
-      style={{ gridRow: "1 / 3", gridColumn: "2 / 4", paddingBottom: "3rem" }}
-    >
+    <MainArea style={{ paddingBottom: "3rem" }}>
       <HeroHome />
       <CardCarousel
         title="Your Favorite Artists"
         link="#"
+        seeMore={true}
         cardsList={cardsFavoriteArtists}
       />
       <CardCarousel
         title="New Music Friday"
         link="#"
+        seeMore={true}
         cardsList={cardsNewMusic}
       />
     </MainArea>

@@ -14,6 +14,8 @@ const MusicInfoContainer = styled.div`
 
   & img {
     width: 270px;
+    height: 270px;
+    object-fit: cover;
     margin-bottom: 1.5rem;
   }
 
@@ -42,9 +44,13 @@ export function MusicInfo(props: { musicItem: IMusicItem }) {
       <img src={props.musicItem.image} alt="Album image" />
       <h1>{props.musicItem.title} </h1>
       <h2>
-        {props.musicItem.artistsOrOwner.map((arOrOw: string) => (
-          <span>{arOrOw}</span>
-        ))}
+        {props.musicItem.artistsOrOwner.map((arOrOw: string, i: number) => {
+          return props.musicItem.type === "playlist" ? (
+            <span key={i}>Playlist by {arOrOw}</span>
+          ) : (
+            <span key={i}>{arOrOw}</span>
+          );
+        })}
       </h2>
       {props.musicItem.type === "track" || props.musicItem.type === "album" ? (
         <p>

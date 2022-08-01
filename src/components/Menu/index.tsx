@@ -1,9 +1,9 @@
-import { FiFacebook, FiHome, FiMusic, FiSearch } from 'react-icons/fi';
-import { GiBananaPeeled, GiCleopatra, GiSmallFire } from 'react-icons/gi';
-import { MdAddCircleOutline, MdFavorite } from 'react-icons/md';
-import { RiHeartPulseLine } from 'react-icons/ri';
-import { TbPlaylist } from 'react-icons/tb';
-import { Link } from 'react-router-dom';
+import { FiFacebook, FiHome, FiMusic, FiSearch } from "react-icons/fi";
+import { GiBananaPeeled, GiCleopatra, GiSmallFire } from "react-icons/gi";
+import { MdAddCircleOutline, MdFavorite } from "react-icons/md";
+import { RiHeartPulseLine } from "react-icons/ri";
+import { TbPlaylist } from "react-icons/tb";
+import { Link } from "react-router-dom";
 import {
   MenuButton,
   MenuContainer,
@@ -11,13 +11,13 @@ import {
   MenuGroupTitle,
   MenuItem,
   MenuLogo,
-} from './styles';
+} from "./styles";
 
 function MenuGroupMain() {
   return (
     <MenuGroup>
       <MenuItem>
-        <Link to="#">
+        <Link to="/home">
           <FiHome />
           Home
         </Link>
