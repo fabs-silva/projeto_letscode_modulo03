@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const HeroContainer = styled.section`
   display: flex;
@@ -17,7 +17,8 @@ export function Hero(props: {
   return (
     <HeroContainer
       style={{
-        background: `url(${props.heroImage}) no-repeat ${props.bgPositionX} ${props.bgPositionY}`,
+        background: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${props.heroImage}) no-repeat ${props.bgPositionX} ${props.bgPositionY}`,
+        backgroundSize: 'cover',
       }}
     >
       {props.children}

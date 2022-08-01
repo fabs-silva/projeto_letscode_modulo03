@@ -8,10 +8,12 @@ ESCFy - Streaming de música baseado do Spotify
 
 - [ ] Login
       -- [ ] Create profile context
-      -- [ ] Change 'Sign Up' link
+      -- [x] Change 'Sign Up' link
+      -- [ ] Check routes when logged in and when not
 
 - [ ] Sign Up
-      -- [ ] Create from scratch
+      -- [x] Create page
+      -- [ ] Create functions
 
 - [ ] Home
       -- [ ] JSON mockups

@@ -48,4 +48,21 @@ type ISongPlaying = {
   image: string;
 };
 
-export type { IToken, ICard, ISongItem, IMusicItem, IProfile, ISongPlaying };
+type IArtist = {
+  id: string;
+  image: string;
+  country: string;
+  flag: string;
+  name: string;
+  listeners: number;
+};
+
+export type {
+  IToken,
+  ICard,
+  ISongItem,
+  IMusicItem,
+  IProfile,
+  ISongPlaying,
+  IArtist,
+};
