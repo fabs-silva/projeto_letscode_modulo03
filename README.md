@@ -6,38 +6,23 @@ ESCFy - Streaming de música baseado do Spotify
 
 ### Pages
 
-- [ ] Login
-      -- [ ] Create profile context
-      -- [x] Change 'Sign Up' link
-      -- [ ] Check routes when logged in and when not
+- [ ] Login - [ ] Create profile context - [x] Change 'Sign Up' link - [ ] Check routes when logged in and when not
 
-- [ ] Sign Up
-      -- [x] Create page
-      -- [ ] Create functions
+- [ ] Sign Up - [x] Create page - [ ] Create functions
 
-- [ ] Home
-      -- [ ] JSON mockups
-      -- [ ] Call API
+- [ ] Home - [ ] JSON mockups - [ ] Call API
 
-- [ ] Album
-      -- [ ] JSON mockups
-      -- [ ] Call API
+- [ ] Album - [ ] JSON mockups - [ ] Call API
 
-- [ ] Playlist
-      -- [ ] JSON mockups
-      -- [ ] Call API
+- [ ] Playlist - [ ] JSON mockups - [ ] Call API
 
-- [ ] Artist
-      -- [ ] Create from scratch
+- [ ] Artist - [ ] Create from scratch
 
-- [ ] User
-      -- [ ] Create from scratch
+- [ ] User - [ ] Create from scratch
 
-- [ ] Search Page
-      -- [ ] Create from scratch
+- [ ] Search Page - [ ] Create from scratch
 
-- [ ] Search Results
-      -- [ ] Call API
+- [ ] Search Results - [ ] Call API
 
 ### Menu
 
@@ -53,20 +38,9 @@ ESCFy - Streaming de música baseado do Spotify
 
 - [ ] Create player context
 - [ ] Add links to music and to artist
-- [ ] Create functions
-      -- [ ] Previous
-      -- [ ] Next
-      -- [ ] Play
-      -- [ ] Progress bar
-      -- [ ] Volume
+- [ ] Create functions - [ ] Previous - [ ] Next - [ ] Play - [ ] Progress bar - [ ] Volume
 
 ### Extra
 
 - [ ] Change header background on scroll
-- [ ] Add these to player:
-      -- [ ] Like
-      -- [ ] Add to playlist
-      -- [ ] Share
-      -- [ ] Shuffle
-      -- [ ] Repeat
-      -- [ ] Queue
+- [ ] Add these to player: - [ ] Like - [ ] Add to playlist - [ ] Share - [ ] Shuffle - [ ] Repeat - [ ] Queue
