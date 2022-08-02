@@ -1,21 +1,9 @@
-import { RiHeartPulseLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import bg from "../../assets/bg.jpg";
-import { Button } from "../../components/Button";
-import { variables } from "../../styles/variables";
+import { RiHeartPulseLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { Button } from '../../components/Button';
+import { variables } from '../../styles/variables';
 const { colors, fontSizes, fontWeight } = variables;
-
-const LoginContainerMain = styled.main`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url(${bg}) fixed no-repeat center center;
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
-`;
 
 const LoginLogo = styled.div`
   font-size: ${fontSizes.xl};
@@ -71,33 +59,31 @@ export function LoginContainer({
   style,
 }: LoginContainerProps) {
   return (
-    <LoginContainerMain>
-      <LoginArea>
-        <LoginLogo>
-          <RiHeartPulseLine />
-          ESCFy
-        </LoginLogo>
-        {error && <LoginError>{error}</LoginError>}
-        {children}
-        <Button onClick={onClick}>{login ? "Login" : "Sign Up"}</Button>
-        <LoginLink>
-          {login ? (
-            <p>
-              Not a member?{" "}
-              <Link to="/sign-up">
-                <strong>Sign up here!</strong>
-              </Link>
-            </p>
-          ) : (
-            <p>
-              Already a member?{" "}
-              <Link to="/">
-                <strong>Sign in here!</strong>
-              </Link>
-            </p>
-          )}
-        </LoginLink>
-      </LoginArea>
-    </LoginContainerMain>
+    <LoginArea>
+      <LoginLogo>
+        <RiHeartPulseLine />
+        ESCFy
+      </LoginLogo>
+      {error && <LoginError>{error}</LoginError>}
+      {children}
+      <Button onClick={onClick}>{login ? 'Login' : 'Sign Up'}</Button>
+      <LoginLink>
+        {login ? (
+          <p>
+            Not a member?{' '}
+            <Link to="/sign-up">
+              <strong>Sign up here!</strong>
+            </Link>
+          </p>
+        ) : (
+          <p>
+            Already a member?{' '}
+            <Link to="/">
+              <strong>Sign in here!</strong>
+            </Link>
+          </p>
+        )}
+      </LoginLink>
+    </LoginArea>
   );
 }

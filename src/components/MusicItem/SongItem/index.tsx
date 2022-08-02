@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { RiPlayListAddLine } from "react-icons/ri";
-import { TbPlayerPlay } from "react-icons/tb";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { convertTime } from "../../../App";
-import { variables } from "../../../styles/variables";
-import { ISongItem } from "../../../types";
+import { useState } from 'react';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { RiPlayListAddLine } from 'react-icons/ri';
+import { TbPlayerPlay } from 'react-icons/tb';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { convertTime } from '../../../App';
+import { variables } from '../../../styles/variables';
+import { ISongItem } from '../../../types';
 
 const { colors, fontSizes, fontWeight } = variables;
 
