@@ -1,9 +1,9 @@
-import { RiHeartPulseLine } from 'react-icons/ri';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import bg from '../../assets/bg.jpg';
-import { Button } from '../../components/Button';
-import { variables } from '../../styles/variables';
+import { RiHeartPulseLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import bg from "../../assets/bg.jpg";
+import { Button } from "../../components/Button";
+import { variables } from "../../styles/variables";
 const { colors, fontSizes, fontWeight } = variables;
 
 const LoginContainerMain = styled.main`
@@ -46,7 +46,7 @@ const LoginArea = styled.form`
   overflow-x: hidden;
 `;
 
-const LoginLink = styled.p`
+const LoginLink = styled.div`
   font-size: ${fontSizes.sm};
   font-weight: ${fontWeight.xs};
 
@@ -79,18 +79,18 @@ export function LoginContainer({
         </LoginLogo>
         {error && <LoginError>{error}</LoginError>}
         {children}
-        <Button onClick={onClick}>{login ? 'Login' : 'Sign Up'}</Button>
+        <Button onClick={onClick}>{login ? "Login" : "Sign Up"}</Button>
         <LoginLink>
           {login ? (
             <p>
-              Not a member?{' '}
+              Not a member?{" "}
               <Link to="/sign-up">
                 <strong>Sign up here!</strong>
               </Link>
             </p>
           ) : (
             <p>
-              Already a member?{' '}
+              Already a member?{" "}
               <Link to="/">
                 <strong>Sign in here!</strong>
               </Link>

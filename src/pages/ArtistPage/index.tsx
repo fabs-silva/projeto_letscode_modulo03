@@ -1,8 +1,9 @@
-import styled from 'styled-components';
-import { artist } from '../../assets/artist';
-import { CardCarousel } from '../../components/CardsCarousel';
-import { variables } from '../../styles/variables';
-import { HeroArtistPage } from './Hero';
+import styled from "styled-components";
+import { artist } from "../../assets/artist";
+import { CardCarousel } from "../../components/CardsCarousel";
+import { MainArea } from "../../components/MainArea";
+import { variables } from "../../styles/variables";
+import { HeroArtistPage } from "./Hero";
 const { colors, fontSizes, fonts } = variables;
 
 const ArtistPageContainer = styled.section`
@@ -35,22 +36,29 @@ type FormFieldsetProps = {
 
 export function Artist() {
   return (
-    <ArtistPageContainer>
-      <HeroArtistPage artist={artist}></HeroArtistPage>
-      <ArtistPageLastRelease />
-      <CardCarousel
-        title="Albums and Singles"
-        link="#"
-        seeMore={true}
-        cardsList={[]}
-      />
-      <CardCarousel title="Playlists" link="#" seeMore={true} cardsList={[]} />
-      <CardCarousel
-        title="Related Artists"
-        link="#"
-        seeMore={true}
-        cardsList={[]}
-      />
-    </ArtistPageContainer>
+    <MainArea style={{ paddingBottom: "3rem" }}>
+      <ArtistPageContainer>
+        <HeroArtistPage artist={artist}></HeroArtistPage>
+        <ArtistPageLastRelease />
+        <CardCarousel
+          title="Albums and Singles"
+          link="#"
+          seeMore={true}
+          cardsList={[]}
+        />
+        <CardCarousel
+          title="Playlists"
+          link="#"
+          seeMore={true}
+          cardsList={[]}
+        />
+        <CardCarousel
+          title="Related Artists"
+          link="#"
+          seeMore={true}
+          cardsList={[]}
+        />
+      </ArtistPageContainer>
+    </MainArea>
   );
 }

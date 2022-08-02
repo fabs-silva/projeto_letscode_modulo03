@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import { artist } from '../../../assets/artist';
-import { Hero } from '../../../components/Hero';
-import { variables } from '../../../styles/variables';
-import { IArtist } from '../../../types';
+import styled from "styled-components";
+import { artist } from "../../../assets/artist";
+import { Hero } from "../../../components/Hero";
+import { variables } from "../../../styles/variables";
+import { IArtist } from "../../../types";
 
 const { colors, fontSizes, fontWeight } = variables;
 
@@ -56,7 +56,12 @@ const HeroMonthlyListeners = styled.p`
 
 export function HeroArtistPage(props: { artist: IArtist }) {
   return (
-    <Hero heroImage={artist.image} bgPositionX="center" bgPositionY="center">
+    <Hero
+      heroImage={artist.image}
+      bgPositionX="center"
+      bgPositionY="center"
+      isImageDark
+    >
       <HeroInfo>
         <p>
           {artist.country} {artist.flag}

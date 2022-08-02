@@ -37,7 +37,12 @@ const HeroInfo = styled.div`
 
 export function HeroHome() {
   return (
-    <Hero heroImage={heroImage} bgPositionX="10%" bgPositionY="30%">
+    <Hero
+      heroImage={heroImage}
+      bgPositionX="10%"
+      bgPositionY="30%"
+      isImageDark={false}
+    >
       <HeroInfo>
         <h1>Tik Tok's hit is here!</h1>
         <h3>

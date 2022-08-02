@@ -1,6 +1,7 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { UserContext } from "../../../App";
 import { variables } from "../../../styles/variables";
-import { IProfile } from "../../../types";
 import { HeaderDropdown } from "../HeaderDropdown";
 
 const { colors, fontSizes, fontWeight } = variables;
@@ -21,15 +22,14 @@ const HeaderProfileContainer = styled.div`
   }
 `;
 
-export function HeaderProfile(props: {
-  user: IProfile;
-  deleteToken: () => void;
-}) {
+export function HeaderProfile(props: { deleteToken: () => void }) {
+  const user = useContext(UserContext);
+  console.log(user);
   return (
     <HeaderProfileContainer>
-      <HeaderDropdown user={props.user} deleteToken={props.deleteToken} />
+      <HeaderDropdown user={user} deleteToken={props.deleteToken} />
       <p>
-        Welcome Back, <span>{props.user.firstName}</span>
+        Welcome Back, <span>{user.firstName}</span>
       </p>
     </HeaderProfileContainer>
   );
