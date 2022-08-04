@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
-import { variables } from "./variables";
+import theme from "./theme";
 
-const { colors, fonts, fontWeight } = variables;
+const { colors, fonts } = theme;
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -13,10 +13,10 @@ export const GlobalStyle = createGlobalStyle`
   body {
     height: 100vh;
     overflow: hidden;
-    background-color: ${colors.primaryColorDark};
-    color: ${colors.mainWhite};
-    font-family: ${fonts.jost};
-    font-weight: ${fontWeight.sm};
+    background-color: ${colors.dark.primary};
+    color: ${colors.main.white};
+    font-family: ${fonts.mainFont};
+    font-weight: ${fonts.fontWeight.sm};
     font-size: 18px;
   }
   
@@ -38,8 +38,8 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   button:disabled {
-    background-color: ${colors.mainGray};
-    color: ${colors.mainWhite};
+    background-color: ${colors.main.gray};
+    color: ${colors.main.white};
     cursor: inherit;
   }
   
@@ -50,8 +50,12 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   a{
-    color: ${colors.mainWhite};
+    color: ${colors.main.white};
     text-decoration: none;
+  }
+
+  ul{
+    list-style: none;
   }
 
 `;

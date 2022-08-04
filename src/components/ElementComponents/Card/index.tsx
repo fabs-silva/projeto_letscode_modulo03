@@ -1,33 +1,6 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { variables } from "../../../styles/variables";
 import { ICard } from "../../../types";
-
-const { colors, fontSizes, fontWeight } = variables;
-
-const CardItemContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-
-  & img {
-    width: 170px;
-    height: 170px;
-    object-fit: cover;
-    margin-bottom: 0.5rem;
-  }
-
-  & h2 {
-    font-size: ${fontSizes.sm};
-    max-width: 170px;
-    margin-bottom: 0.25rem;
-  }
-
-  & p {
-    font-size: ${fontSizes.sm};
-    font-weight: ${fontWeight.xs};
-    max-width: 170px;
-  }
-`;
+import { CardItemContainer } from "./styles";
 
 export function CardItem(props: { card: ICard }) {
   return (
