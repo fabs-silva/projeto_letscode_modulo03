@@ -1,12 +1,15 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import bg from '../../assets/bg.jpg';
+import bg from '../../../assets/images/bg.jpg';
+import theme from '../../../styles/theme';
 
-const LoginLayoutContainer = styled.main`
+const { colors } = theme;
+
+const LoginContainer = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+  background: ${colors.alpha.background},
     url(${bg}) fixed no-repeat center center;
   background-size: cover;
   width: 100vw;
@@ -15,8 +18,8 @@ const LoginLayoutContainer = styled.main`
 
 export function LoginLayout() {
   return (
-    <LoginLayoutContainer>
+    <LoginContainer>
       <Outlet />
-    </LoginLayoutContainer>
+    </LoginContainer>
   );
 }
