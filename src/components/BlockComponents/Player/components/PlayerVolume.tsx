@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { FaRegCircle } from 'react-icons/fa';
 import { TbVolume, TbVolume3 } from 'react-icons/tb';
-import styled from 'styled-components';
-import { variables } from '../../../styles/variables';
-
-const { colors, fontSizes } = variables;
+import { PlayerVolumeBar, PlayerVolumeContainer } from '../styles';
 
 export function PlayerVolume(props: { progress: number }) {
   const [isMuted, setIsMuted] = useState<boolean>(false);

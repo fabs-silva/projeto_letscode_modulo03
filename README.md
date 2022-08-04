@@ -5,9 +5,20 @@ ESCFy - Spotify based music app
 ## To Do - Refactoring
 
 - [ ] Login
-      ..-[x] layout
-      ..-[ ] features
+
+  - [x] layout
+  - [x] login to account
+  - [ ] save data to context
 
 - [ ] Sign Up
-      ..-[x] layout
-      ..-[ ] features
+
+  - [x] layouts
+  - [ ] save new account
+
+- [ ] 404
+
+  - [ ] create layout
+
+- [ ] Home
+
+  - [ ] main area layout

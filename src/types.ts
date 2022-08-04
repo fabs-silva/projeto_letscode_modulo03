@@ -1,3 +1,5 @@
+import { IconType } from 'react-icons';
+
 type IToken = {
   token: string;
 };
@@ -57,6 +59,13 @@ type IArtist = {
   listeners: number;
 };
 
+type IPlaylist = {
+  id: string;
+  title: string;
+  icon: IconType;
+  link: string;
+};
+
 export type {
   IToken,
   ICard,
@@ -65,4 +74,5 @@ export type {
   IProfile,
   ISongPlaying,
   IArtist,
+  IPlaylist,
 };

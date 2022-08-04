@@ -14,12 +14,14 @@ export default {
       primary: '#6f6173',
       secondary: '#ffc184',
       accent: '#e797b3',
+      gray: '#e7e7e7',
     },
     dark: {
       primary: '#362939',
       primaryDarker: '#281f2b',
       secondary: '#92381f',
       accent: '#96395a',
+      gray: '#595959',
     },
     alpha: {
       black: 'rgba(0, 0, 0, 0.2)',

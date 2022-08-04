@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
+import { UserContext } from '../../../App';
 import { Header } from '../../BlockComponents/Header';
 import { Menu } from '../../BlockComponents/Menu';
 import { Player } from '../../BlockComponents/Player';
@@ -16,10 +18,12 @@ const MainAppContainer = styled.main`
 `;
 
 export function MainAppLayout() {
+  const user = useContext(UserContext);
+
   return (
     <MainAppContainer>
       <Menu />
-      <Header />
+      <Header user={user} />
       <Outlet />
       <Player />
     </MainAppContainer>
