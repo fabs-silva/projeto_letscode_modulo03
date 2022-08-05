@@ -1,9 +1,10 @@
-import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
-import { useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
-import { AuthProvider } from "./contexts/auth";
-import { RoutesComponent } from "./RoutesComponent";
-import { GlobalStyle } from "./styles/globalStyles";
+import { polyfillCountryFlagEmojis } from 'country-flag-emoji-polyfill';
+import { useEffect } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from './contexts/auth';
+import { SongProvider } from './contexts/song';
+import { RoutesComponent } from './RoutesComponent';
+import { GlobalStyle } from './styles/globalStyles';
 
 export function App() {
   useEffect(() => {
@@ -12,10 +13,12 @@ export function App() {
 
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <GlobalStyle />
-        <RoutesComponent />
-      </BrowserRouter>
+      <SongProvider>
+        <BrowserRouter>
+          <GlobalStyle />
+          <RoutesComponent />
+        </BrowserRouter>
+      </SongProvider>
     </AuthProvider>
   );
 }

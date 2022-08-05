@@ -44,7 +44,7 @@ const HeaderSearchContainer = styled.div`
   }
 
   & input:focus-visible {
-    border-color: ${colors.light.accent};
+    outline: 2px solid ${colors.light.accent};
   }
 `;
 

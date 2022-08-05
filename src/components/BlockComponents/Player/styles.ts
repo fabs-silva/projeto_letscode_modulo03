@@ -19,8 +19,10 @@ const PlayerMainContainer = styled.section`
 `;
 
 const PlayerTime = styled.p`
+  width: 45px;
   font-size: ${fonts.fontSizes.sm};
   font-weight: ${fonts.fontWeight.sm};
+  text-align: center;
 `;
 
 const PlayerVolumeContainer = styled.div`
@@ -33,62 +35,14 @@ const PlayerVolumeContainer = styled.div`
   }
 `;
 
-const PlayerVolumeBar = styled.div`
-  width: 4rem;
-  height: 0.3rem;
-  border-radius: 0.5rem;
-  background-color: ${colors.light.accent};
-  overflow: hidden;
-
-  & span {
-    height: 100%;
-    background-color: ${colors.light.accent};
-  }
-
-  & svg {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    margin-top: -5px;
-    margin-left: -10px;
-    width: 0.9rem;
-    height: 0.9rem;
-    border: 0.18rem solid ${colors.light.accent};
-    border-radius: 100%;
-    background-color: ${colors.main.accent};
-    fill: ${colors.main.accent};
-    box-shadow: 0 1px 6px rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-  }
+const PlayerVolumeBar = styled.input`
+  width: 6.5rem;
+  background-color: transparent;
 `;
 
-const PlayerProgressBarContainer = styled.div`
-  width: 20rem;
-  height: 0.3rem;
-  border-radius: 0.5rem;
-  background-color: ${colors.light.accent};
-  overflow: hidden;
-
-  & span {
-    height: 100%;
-    background-color: ${colors.light.accent};
-  }
-
-  & svg {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    margin-top: -5px;
-    margin-left: -10px;
-    width: 0.9rem;
-    height: 0.9rem;
-    border: 0.18rem solid ${colors.light.accent};
-    border-radius: 100%;
-    background-color: ${colors.main.accent};
-    fill: ${colors.main.accent};
-    box-shadow: 0 1px 6px rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-  }
+const PlayerProgressBarContainer = styled.input`
+  width: 18rem;
+  background-color: transparent;
 `;
 
 const PlayerMainButtonsContainer = styled.div`
@@ -96,10 +50,18 @@ const PlayerMainButtonsContainer = styled.div`
   gap: 1rem;
   align-items: center;
   justify-content: center;
-  font-size: ${fonts.fontSizes.xl};
 
-  & svg {
-    cursor: pointer;
+  & button {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: transparent;
+
+    & svg {
+      cursor: pointer;
+      color: white;
+      font-size: ${fonts.fontSizes.lg};
+    }
   }
 `;
 
@@ -130,6 +92,10 @@ const PlayerMusicInfoAlbumImage = styled.div`
   height: 40px;
   border-radius: 0.5rem;
   border: 2px solid ${colors.main.secondary};
+
+  & img {
+    border-radius: 0.5rem;
+  }
 `;
 
 const PlayerMusicInfoSong = styled.div`

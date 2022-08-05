@@ -1,4 +1,6 @@
-import { ISongPlaying } from '../../../types';
+import { useContext } from 'react';
+import { SongContext } from '../../../contexts/song';
+import { usePlayer } from '../../../hooks/usePlayer';
 import { convertTime } from '../../../utils/convertTime';
 import { PlayerExtraButtons } from './components/PlayerExtraButtons';
 import { PlayerMainButtons } from './components/PlayerMainButtons';
@@ -7,26 +9,26 @@ import { PlayerProgressBar } from './components/PlayerProgressBar';
 import { PlayerVolume } from './components/PlayerVolume';
 import { PlayerContainer, PlayerMainContainer, PlayerTime } from './styles';
 
-export const songPlaying: ISongPlaying = {
-  id: '1',
-  title: 'О Мамо ',
-  artists: ['Сальто Назад '],
-  length: 183,
-  image: 'https://i1.sndcdn.com/artworks-000204978262-2re8hh-t500x500.jpg',
-};
-
 export function Player() {
+  const { $songPlayer, songPlaying } = useContext(SongContext);
+  const { updateSongProgress, videoControl } = usePlayer($songPlayer);
+
   return (
     <PlayerContainer>
-      <PlayerMusicInfo song={songPlaying} />
+      <PlayerMusicInfo song={songPlaying!} />
       <PlayerMainContainer>
-        <PlayerMainButtons />
-        <PlayerTime>00:00</PlayerTime>
-        <PlayerProgressBar progress={25} />
-        <PlayerTime>{convertTime(songPlaying.length)}</PlayerTime>
+        <PlayerMainButtons songRef={$songPlayer} />
+        <PlayerTime>{convertTime(videoControl.songProgress)}</PlayerTime>
+        <audio
+          src={songPlaying!.url}
+          ref={$songPlayer}
+          onTimeUpdate={updateSongProgress}
+        />
+        <PlayerProgressBar song={songPlaying!} songRef={$songPlayer} />
+        <PlayerTime>{convertTime(songPlaying!.length)}</PlayerTime>
       </PlayerMainContainer>
       <PlayerExtraButtons />
-      <PlayerVolume progress={100} />
+      <PlayerVolume song={songPlaying!} />
     </PlayerContainer>
   );
 }

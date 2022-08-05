@@ -1,13 +1,13 @@
-import heroImage from "../../assets/images/hero-image.jpg";
-import { cardsNewMusic } from "../../assets/mockups/cardsNewMusic";
-import { CardCarousel } from "../../components/BlockComponents/CardCarousel";
-import { Hero } from "../../components/BlockComponents/Hero";
-import { MainArea } from "../../components/BlockComponents/MainArea";
-import { HeroInfo } from "./styles";
+import heroImage from '../../assets/images/hero-image.jpg';
+import { cardsNewMusic } from '../../assets/mockups/cardsNewMusic';
+import { CardCarousel } from '../../components/BlockComponents/CardCarousel';
+import { Hero } from '../../components/BlockComponents/Hero';
+import { MainArea } from '../../components/BlockComponents/MainArea';
+import { HeroInfo } from './styles';
 
 export function Home() {
   return (
-    <MainArea style={{ paddingBottom: "3rem" }}>
+    <MainArea style={{ paddingBottom: '3rem' }}>
       <Hero
         heroImage={heroImage}
         bgPositionX="10%"
@@ -27,7 +27,7 @@ export function Home() {
         link="#"
         seeMore={true}
         cardsList={cardsNewMusic}
-        cardItemStyle={{ height: "260px", overflow: "hidden" }}
+        cardItemStyle={{ height: '260px', overflow: 'hidden' }}
       />
     </MainArea>
   );

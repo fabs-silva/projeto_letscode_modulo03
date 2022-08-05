@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "../../../styles/theme";
+import styled from 'styled-components';
+import theme from '../../../styles/theme';
 const { colors, fonts } = theme;
 
 export const FormFieldsetContainer = styled.fieldset`
@@ -26,6 +26,6 @@ export const FormFieldsetContainer = styled.fieldset`
   }
 
   & input:focus-visible {
-    border-color: ${colors.light.accent};
+    outline: 2px solid ${colors.light.accent};
   }
 `;

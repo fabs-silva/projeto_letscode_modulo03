@@ -1,4 +1,4 @@
-import { IconType } from "react-icons";
+import { IconType } from 'react-icons';
 
 type IToken = {
   token: string;
@@ -48,6 +48,7 @@ type ISongPlaying = {
   artists: string[];
   length: number;
   image: string;
+  url: string;
 };
 
 type IArtist = {

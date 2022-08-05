@@ -1,21 +1,13 @@
-import { useState } from 'react';
-import {
-  MdOutlineSkipNext,
-  MdOutlineSkipPrevious,
-  MdSkipNext,
-  MdSkipPrevious,
-} from 'react-icons/md';
 import { TbPlayerPause, TbPlayerPlay } from 'react-icons/tb';
+import { usePlayer } from '../../../../hooks/usePlayer';
 import { PlayerMainButtonsContainer } from '../styles';
 
-export function PlayerMainButtons() {
-  const [playing, setPlaying] = useState<boolean>(false);
-  const [hasPrevious, setHasPrevious] = useState<boolean>(false);
-  const [hasNext, setHasNext] = useState<boolean>(false);
+export function PlayerMainButtons(props: { songRef: any }) {
+  const { toggleVideoPlay, videoControl } = usePlayer(props.songRef);
 
   return (
     <PlayerMainButtonsContainer>
-      {hasPrevious ? (
+      {/*  {hasPrevious ? (
         <MdSkipPrevious
           onClick={() => {
             setHasPrevious(!hasPrevious);
@@ -27,20 +19,11 @@ export function PlayerMainButtons() {
             setHasPrevious(!hasPrevious);
           }}
         />
-      )}
-      {playing ? (
-        <TbPlayerPause
-          onClick={() => {
-            setPlaying(!playing);
-          }}
-        />
-      ) : (
-        <TbPlayerPlay
-          onClick={() => {
-            setPlaying(!playing);
-          }}
-        />
-      )}
+      )} */}
+      <button onClick={toggleVideoPlay}>
+        {videoControl.playing ? <TbPlayerPause /> : <TbPlayerPlay />}
+      </button>
+      {/*{' '}
       {hasNext ? (
         <MdSkipNext
           onClick={() => {
@@ -53,7 +36,8 @@ export function PlayerMainButtons() {
             setHasNext(!hasNext);
           }}
         />
-      )}
+      )}{' '}
+        */}
     </PlayerMainButtonsContainer>
   );
 }
