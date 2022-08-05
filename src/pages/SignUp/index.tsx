@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import styled from 'styled-components';
-import { LoginWrapper } from '../../components/BlockComponents/LoginBlock';
-import { FormFieldset } from '../../components/ElementComponents/FormFieldset';
+import { useState } from "react";
+import styled from "styled-components";
+import { LoginWrapper } from "../../components/BlockComponents/LoginBlock";
+import { FormFieldset } from "../../components/ElementComponents/FormFieldset";
+import { IProfile } from "../../types";
 
 const SignUpForm = styled.div`
   display: grid;
@@ -15,13 +16,13 @@ const SignUpForm = styled.div`
 `;
 
 export function SignUp() {
-  const [firstName, setFirstName] = useState<string>('');
-  const [lastName, setLastName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [imageUrl, setImageUrl] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [error, setError] = useState<IProfile | Error | null>(null);
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -34,7 +35,7 @@ export function SignUp() {
       !password ||
       !imageUrl
     ) {
-      setError('Please, fill all inputs before continue!');
+      setError(new Error("Please, fill all inputs before continue!"));
       return;
     }
   };

@@ -1,41 +1,31 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { LoginWrapper } from '../../components/BlockComponents/LoginBlock';
-import { FormFieldset } from '../../components/ElementComponents/FormFieldset';
-import { IProfile } from '../../types';
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { LoginWrapper } from "../../components/BlockComponents/LoginBlock";
+import { FormFieldset } from "../../components/ElementComponents/FormFieldset";
+import { AuthContext } from "../../contexts/auth";
+import { IProfile } from "../../types";
 
-export function Login(props: { profile: IProfile }) {
+export function Login(props: { user: IProfile }) {
   let navigate = useNavigate();
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const { callbackLogin, isLoggedIn, login } = useContext(AuthContext);
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    if (!username || !password) {
-      setError('Please, fill all inputs before continue!');
-      return;
-    }
-
-    if (
-      username !== props.profile.username ||
-      password !== props.profile.password
-    ) {
-      setError('Invalid username and/or password!');
-      return;
-    }
-
-    setTimeout(() => {
-      navigate('/home', { replace: true });
-      setUsername('');
-      setPassword('');
-      setError('');
-    }, 1500);
+    login(username, password);
+    setUsername("");
+    setPassword("");
+    navigate("/home", { replace: true });
   };
 
   return (
-    <LoginWrapper error={error} onClick={handleSubmit} login={true}>
+    <LoginWrapper
+      error={callbackLogin}
+      onClick={handleSubmit}
+      login={isLoggedIn}
+    >
       <FormFieldset
         label="Username"
         placeholder="Username"

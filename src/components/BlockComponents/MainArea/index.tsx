@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { CSSProperties } from "react";
+import styled from "styled-components";
 
 const MainAreaContainer = styled.main`
   grid-area: content;
@@ -11,7 +12,8 @@ const MainAreaContainer = styled.main`
 
 type MainAreaProps = {
   children: React.ReactNode;
+  style: CSSProperties;
 };
-export function MainArea({ children, ...rest }: MainAreaProps) {
+export function MainArea({ children, style, ...rest }: MainAreaProps) {
   return <MainAreaContainer>{children}</MainAreaContainer>;
 }

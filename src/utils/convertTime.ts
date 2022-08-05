@@ -1,8 +1,10 @@
-export function convertTime(timeInSeconds: number) {
-  const timeInMinutes = Math.floor(timeInSeconds / 60);
-  const secondsLeft = timeInSeconds % 60;
+export function convertTime(duration: number) {
+  const minutes = Math.floor((duration % 3600) / 60);
+  const seconds = duration % 60;
 
-  return `${timeInMinutes}:${
-    secondsLeft < 10 ? `0${secondsLeft}` : secondsLeft
-  }`;
+  const timeString = [minutes, seconds]
+    .map((unit) => String(unit).padStart(2, "0"))
+    .join(":");
+
+  return timeString;
 }

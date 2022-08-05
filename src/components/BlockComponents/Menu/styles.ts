@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import theme from '../../../styles/theme';
+import styled from "styled-components";
+import theme from "../../../styles/theme";
 
 const { colors, fonts } = theme;
 
@@ -11,7 +11,6 @@ const MenuContainer = styled.aside`
   width: 200px;
   background-color: ${colors.main.primary};
   padding: 1rem;
-  text-transform: uppercase;
 `;
 
 const MenuLogo = styled.p`
@@ -29,6 +28,7 @@ const MenuGroup = styled.ul`
   list-style: none;
   padding: 0;
   margin-bottom: 0.5rem;
+  text-transform: uppercase;
 `;
 
 const MenuGroupTitle = styled.h2`

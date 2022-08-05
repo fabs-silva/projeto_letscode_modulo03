@@ -20,9 +20,9 @@ export function Hero(props: {
       style={{
         background: props.isImageDark
           ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-        url(${props.heroImage}) no-repeat ${props.bgPositionX} ${props.bgPositionY}`
-          : `url(${props.heroImage}) no-repeat ${props.bgPositionX} ${props.bgPositionY}`,
-        backgroundSize: "cover",
+        url(${props.heroImage}) fixed no-repeat ${props.bgPositionX} ${props.bgPositionY}`
+          : `url(${props.heroImage}) fixed no-repeat ${props.bgPositionX} ${props.bgPositionY}`,
+        backgroundSize: "contain",
       }}
     >
       {props.children}

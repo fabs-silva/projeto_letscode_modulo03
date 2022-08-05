@@ -1,12 +1,9 @@
-import { polyfillCountryFlagEmojis } from 'country-flag-emoji-polyfill';
-import { createContext, useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { profile } from './assets/mockups/profile';
-import { RoutesComponent } from './RoutesComponent';
-import { GlobalStyle } from './styles/globalStyles';
-import { IProfile } from './types';
-
-export const UserContext = createContext({} as IProfile);
+import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
+import { useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./contexts/auth";
+import { RoutesComponent } from "./RoutesComponent";
+import { GlobalStyle } from "./styles/globalStyles";
 
 export function App() {
   useEffect(() => {
@@ -14,11 +11,11 @@ export function App() {
   }, []);
 
   return (
-    <UserContext.Provider value={profile}>
+    <AuthProvider>
       <BrowserRouter>
         <GlobalStyle />
         <RoutesComponent />
       </BrowserRouter>
-    </UserContext.Provider>
+    </AuthProvider>
   );
 }

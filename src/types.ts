@@ -1,4 +1,4 @@
-import { IconType } from 'react-icons';
+import { IconType } from "react-icons";
 
 type IToken = {
   token: string;
@@ -66,6 +66,14 @@ type IPlaylist = {
   link: string;
 };
 
+type IAuthContext = {
+  isLoggedIn: boolean;
+  loading: boolean;
+  callbackLogin: IProfile | Error | null;
+  login: (username: string, password: string) => void;
+  logout: () => void;
+};
+
 export type {
   IToken,
   ICard,
@@ -75,4 +83,5 @@ export type {
   ISongPlaying,
   IArtist,
   IPlaylist,
+  IAuthContext,
 };
