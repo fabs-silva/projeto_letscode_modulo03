@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import styled from "styled-components";
-import { MainArea } from "../../components/BlockComponents/MainArea";
-import { getPlaylist } from "../../services/api";
-import { IPlaylist } from "../../types";
-import { PlaylistItem } from "./components/PlaylistContent";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { MainArea } from '../../components/BlockComponents/MainArea';
+import { getPlaylist } from '../../services/apiPlaylists';
+import { IPlaylist } from '../../types';
+import { PlaylistItem } from './components/PlaylistContent';
 
 const PlaylistContainer = styled.div`
   display: grid;
@@ -35,7 +35,7 @@ export function Playlist() {
   }, [isLoading, playlist]);
 
   return (
-    <MainArea style={{ padding: "3rem 0" }}>
+    <MainArea style={{ padding: '3rem 0' }}>
       <PlaylistContainer>
         {!isLoading && <PlaylistItem playlist={playlist} />}
       </PlaylistContainer>

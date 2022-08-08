@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import styled from "styled-components";
-import { MainArea } from "../../components/BlockComponents/MainArea";
-import { getAlbum } from "../../services/api";
-import { IAlbum } from "../../types";
-import { AlbumItem } from "./components/AlbumContent";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { MainArea } from '../../components/BlockComponents/MainArea';
+import { getAlbum } from '../../services/apiAlbums';
+import { IAlbum } from '../../types';
+import { AlbumItem } from './components/AlbumContent';
 
 const AlbumContainer = styled.div`
   display: grid;
@@ -36,7 +36,7 @@ export function Album() {
   }, [album.id]);
 
   return (
-    <MainArea style={{ padding: "3rem 0" }}>
+    <MainArea style={{ padding: '3rem 0' }}>
       <AlbumContainer>
         {!isLoading && <AlbumItem album={album} />}
       </AlbumContainer>

@@ -11,7 +11,7 @@ import { PlayerContainer, PlayerMainContainer, PlayerTime } from './styles';
 
 export function Player() {
   const { $songPlayer, songPlaying } = useContext(SongContext);
-  const { videoControl, songProgress, updateSongProgress, getSongLength } =
+  const { videoControl, songProgress, updateSongProgress } =
     usePlayer($songPlayer);
 
   return (
@@ -29,7 +29,7 @@ export function Player() {
         )}
         <PlayerProgressBar song={songPlaying!} songRef={$songPlayer} />
         <PlayerTime>
-          {convertTimeSeconds(videoControl.previewLength)}
+          {convertTimeSeconds(isNaN(videoControl.previewLength) ? 0 : 30)}
         </PlayerTime>
       </PlayerMainContainer>
       <PlayerExtraButtons />

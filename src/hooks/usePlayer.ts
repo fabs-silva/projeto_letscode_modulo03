@@ -10,6 +10,7 @@ export const usePlayer = (songRef: any) => {
 
   useEffect(() => {
     getSongLength();
+    console.log(videoControl.previewLength);
   }, [songRef]);
 
   useEffect(() => {
@@ -76,6 +77,5 @@ export const usePlayer = (songRef: any) => {
     updateSongProgress,
     handleVolume,
     songProgress,
-    getSongLength,
   };
 };
