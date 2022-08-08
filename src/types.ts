@@ -1,8 +1,4 @@
-import { IconType } from 'react-icons';
-
-type IToken = {
-  token: string;
-};
+import { IconType } from "react-icons";
 
 type IProfile = {
   id: number;
@@ -14,6 +10,14 @@ type IProfile = {
   email: string;
 };
 
+type IAuthContext = {
+  isLoggedIn: boolean;
+  loading: boolean;
+  callbackLogin: IProfile | Error | null;
+  login: (username: string, password: string) => void;
+  logout: () => void;
+};
+
 type ICard = {
   id: number;
   image: string;
@@ -23,66 +27,49 @@ type ICard = {
   type?: string;
 };
 
-type ISongItem = {
+type IPlaylist = {
   id: string;
-  track: number;
+  image: string;
   title: string;
-  artists: string[];
-  length: number;
+  owner: string;
+  tracks: ITrack[];
+  totalTracks: number;
+  icon?: IconType;
 };
 
-type IMusicItem = {
+type IAlbum = {
   id: string;
+  image: string;
+  title: string;
+  year: string;
+  artists: IArtist[];
+  tracks: ITrack[];
+  totalTracks: number;
   type: string;
-  title: string;
-  image: string;
-  artistsOrOwner: string[];
-  year?: number;
-  label?: string;
-  numberItems?: number;
 };
 
-type ISongPlaying = {
+type ITrack = {
   id: string;
   title: string;
-  artists: string[];
   length: number;
-  image: string;
-  url: string;
+  artists?: IArtist[];
+  track_number?: number;
+  song_url: string;
+  image?: string;
 };
 
 type IArtist = {
   id: string;
-  image: string;
-  country: string;
-  flag: string;
   name: string;
-  listeners: number;
-};
-
-type IPlaylist = {
-  id: string;
-  title: string;
-  icon: IconType;
-  link: string;
-};
-
-type IAuthContext = {
-  isLoggedIn: boolean;
-  loading: boolean;
-  callbackLogin: IProfile | Error | null;
-  login: (username: string, password: string) => void;
-  logout: () => void;
+  image?: string;
 };
 
 export type {
-  IToken,
-  ICard,
-  ISongItem,
-  IMusicItem,
   IProfile,
-  ISongPlaying,
-  IArtist,
-  IPlaylist,
   IAuthContext,
+  ICard,
+  IPlaylist,
+  ITrack,
+  IArtist,
+  IAlbum,
 };

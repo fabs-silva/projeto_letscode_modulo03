@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { RiHeartPulseLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/ElementComponents/Button";
@@ -19,9 +18,6 @@ export function LoginWrapper({
   children,
   ...rest
 }: LoginWrapperProps) {
-  useEffect(() => {
-    console.log(typeof error);
-  }, [error]);
   return (
     <LoginWrapperContainer>
       <LoginLogo>

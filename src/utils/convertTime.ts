@@ -1,7 +1,10 @@
 export function convertTime(duration: number) {
-  const minutes = Math.floor((duration % 3600) / 60);
-  const seconds = duration % 60;
+  let minutes = Math.floor(duration / 60000);
+  let seconds = ((duration % 60000) / 1000).toFixed(0);
 
+  if (seconds === "60") {
+    (seconds = "00"), (minutes += 1);
+  }
   const timeString = [minutes, seconds]
     .map((unit) => String(unit).padStart(2, "0"))
     .join(":");

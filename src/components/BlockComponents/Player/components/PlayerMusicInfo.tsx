@@ -1,31 +1,37 @@
-import { Link } from 'react-router-dom';
-import { ISongPlaying } from '../../../../types';
+import { Link } from "react-router-dom";
+import { IArtist, ITrack } from "../../../../types";
 import {
   PlayerMusicInfoAlbumImage,
   PlayerMusicInfoArtistName,
   PlayerMusicInfoContainer,
   PlayerMusicInfoSong,
   PlayerMusicInfoSongTitle,
-} from '../styles';
+} from "../styles";
 
-export function PlayerMusicInfo(props: { song: ISongPlaying }) {
+export function PlayerMusicInfo(props: { song: ITrack }) {
   return (
     <PlayerMusicInfoContainer>
-      <PlayerMusicInfoAlbumImage>
-        <img src={props.song.image} alt={props.song.title} />
-      </PlayerMusicInfoAlbumImage>
-      <PlayerMusicInfoSong>
-        <PlayerMusicInfoSongTitle>
-          <Link to="#">{props.song.title}</Link>
-        </PlayerMusicInfoSongTitle>
-        <PlayerMusicInfoArtistName>
-          {props.song.artists.map((artist: string, i: number) => (
-            <Link to="#" key={i}>
-              <span>{artist}</span>
-            </Link>
-          ))}
-        </PlayerMusicInfoArtistName>
-      </PlayerMusicInfoSong>
+      {props.song ? (
+        <>
+          <PlayerMusicInfoAlbumImage>
+            <img src={props.song.image} alt={props.song.title} />
+          </PlayerMusicInfoAlbumImage>
+          <PlayerMusicInfoSong>
+            <PlayerMusicInfoSongTitle>
+              <Link to={`/album/${props.song.id}`}>{props.song.title}</Link>
+            </PlayerMusicInfoSongTitle>
+            <PlayerMusicInfoArtistName>
+              {props.song.artists !== undefined &&
+                props.song.artists.map((artist: IArtist, i: number) => [
+                  i > 0 && ", ",
+                  <Link to={`/artist/${artist.id}`} key={artist.id}>
+                    {artist.name}
+                  </Link>,
+                ])}
+            </PlayerMusicInfoArtistName>
+          </PlayerMusicInfoSong>
+        </>
+      ) : null}
     </PlayerMusicInfoContainer>
   );
 }

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import theme from '../../../styles/theme';
+import styled from "styled-components";
+import theme from "../../../styles/theme";
 
 const { colors, fonts } = theme;
 
@@ -50,18 +50,18 @@ const PlayerMainButtonsContainer = styled.div`
   gap: 1rem;
   align-items: center;
   justify-content: center;
+`;
 
-  & button {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    background-color: transparent;
+const ToggleButton = styled.button`
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: transparent;
 
-    & svg {
-      cursor: pointer;
-      color: white;
-      font-size: ${fonts.fontSizes.lg};
-    }
+  & svg {
+    cursor: pointer;
+    color: white;
+    font-size: ${fonts.fontSizes.lg};
   }
 `;
 
@@ -127,4 +127,5 @@ export {
   PlayerMusicInfoSong,
   PlayerMusicInfoSongTitle,
   PlayerMusicInfoArtistName,
+  ToggleButton,
 };

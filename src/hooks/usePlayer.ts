@@ -1,16 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export const usePlayer = (songRef: any) => {
   const [videoControl, setVideoControl] = useState({
     playing: false,
-    songPercentage: 0,
     songProgress: 0,
-    songSeeking: 0,
+    isMuted: false,
   });
 
   useEffect(() => {
+    if (songRef === undefined) {
+      return;
+    }
     videoControl.playing ? songRef.current.play() : songRef.current.pause();
   }, [songRef, videoControl.playing]);
+
+  useEffect(() => {
+    if (songRef === undefined) {
+      return;
+    }
+    videoControl.isMuted
+      ? (songRef.current.muted = true)
+      : (songRef.current.muted = false);
+  }, [songRef, videoControl.isMuted]);
 
   function toggleVideoPlay() {
     setVideoControl({
@@ -19,35 +30,37 @@ export const usePlayer = (songRef: any) => {
     });
   }
 
-  function updateSongProgress() {
-    const progressPercentage =
-      (songRef.current.currentTime / songRef.current.duration) * 100;
+  function toggleIsMuted() {
+    setVideoControl({
+      ...videoControl,
+      isMuted: !videoControl.isMuted,
+    });
+  }
 
+  function updateSongProgress() {
+    if (songRef === undefined) {
+      return;
+    }
     const progressTime = Math.floor(songRef.current.currentTime);
 
     setVideoControl({
       ...videoControl,
       songProgress: progressTime,
-      songPercentage: progressPercentage,
     });
-
-    console.log(videoControl.songPercentage);
   }
 
-  function handleSeeking(e) {
-    const seeking = (songRef.current.currentTime =
-      (e.target.value / 100) * songRef.current.duration);
-
-    setVideoControl({
-      ...videoControl,
-      songSeeking: seeking,
-    });
+  function handleVolume(e) {
+    if (songRef === undefined) {
+      return;
+    }
+    return (songRef.current.volume = e.target.value / 100);
   }
 
   return {
     videoControl,
     toggleVideoPlay,
+    toggleIsMuted,
     updateSongProgress,
-    handleSeeking,
+    handleVolume,
   };
 };

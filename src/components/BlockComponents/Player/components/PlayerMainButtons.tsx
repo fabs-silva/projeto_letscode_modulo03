@@ -1,6 +1,6 @@
-import { TbPlayerPause, TbPlayerPlay } from 'react-icons/tb';
-import { usePlayer } from '../../../../hooks/usePlayer';
-import { PlayerMainButtonsContainer } from '../styles';
+import { TbPlayerPause, TbPlayerPlay } from "react-icons/tb";
+import { usePlayer } from "../../../../hooks/usePlayer";
+import { PlayerMainButtonsContainer, ToggleButton } from "../styles";
 
 export function PlayerMainButtons(props: { songRef: any }) {
   const { toggleVideoPlay, videoControl } = usePlayer(props.songRef);
@@ -20,9 +20,9 @@ export function PlayerMainButtons(props: { songRef: any }) {
           }}
         />
       )} */}
-      <button onClick={toggleVideoPlay}>
+      <ToggleButton onClick={toggleVideoPlay}>
         {videoControl.playing ? <TbPlayerPause /> : <TbPlayerPlay />}
-      </button>
+      </ToggleButton>
       {/*{' '}
       {hasNext ? (
         <MdSkipNext

@@ -15,5 +15,5 @@ type MainAreaProps = {
   style: CSSProperties;
 };
 export function MainArea({ children, style, ...rest }: MainAreaProps) {
-  return <MainAreaContainer>{children}</MainAreaContainer>;
+  return <MainAreaContainer style={style}>{children}</MainAreaContainer>;
 }

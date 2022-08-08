@@ -1,30 +1,26 @@
-import { FiFacebook } from 'react-icons/fi';
-import { GiBananaPeeled, GiCleopatra, GiSmallFire } from 'react-icons/gi';
+import { FiFacebook } from "react-icons/fi";
+import { GiBananaPeeled, GiCleopatra, GiSmallFire } from "react-icons/gi";
 
 export const playlistsMenu = [
   {
-    id: '1',
-    title: 'Like Cleopatra',
+    id: "1jyAqpVIT2bC3nay45vSKj",
+    title: "Like Cleopatra",
     icon: GiCleopatra,
-    link: '#',
   },
 
   {
-    id: '2',
-    title: 'Social Media Hits',
+    id: "6j41bxZwOukken6OaFlbmr",
+    title: "Social Media Hits",
     icon: FiFacebook,
-    link: '#',
   },
   {
-    id: '3',
-    title: 'Yum-Yum-Yum',
+    id: "0IbI6AebOojuvBZdenRanT",
+    title: "Yum-Yum-Yum",
     icon: GiBananaPeeled,
-    link: '#',
   },
   {
-    id: '4',
+    id: "6H55Q66MLQGDFqPBb4YsqT",
     title: "I'm On Fire",
     icon: GiSmallFire,
-    link: '#',
   },
 ];
