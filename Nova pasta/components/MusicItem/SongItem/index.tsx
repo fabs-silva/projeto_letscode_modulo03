@@ -4,7 +4,6 @@ import { RiPlayListAddLine } from 'react-icons/ri';
 import { TbPlayerPlay } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { convertTime } from '../../../App';
 import { variables } from '../../../styles/variables';
 import { ISongItem } from '../../../types';
 
@@ -94,7 +93,9 @@ export function SongItem(props: { song: ISongItem }) {
         )}
         <RiPlayListAddLine onClick={() => {}} />
       </SongItemButtons>
-      <SongItemLength>{convertTime(props.song.length)}</SongItemLength>
+      <SongItemLength>
+        {convertTimeMilliseconds(props.song.length)}
+      </SongItemLength>
     </SongItemContainer>
   );
 }

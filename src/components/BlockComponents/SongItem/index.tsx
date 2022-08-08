@@ -1,10 +1,10 @@
-import { useContext, useState } from "react";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { RiPlayListAddLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
-import { SongContext } from "../../../contexts/song";
-import { IArtist, ITrack } from "../../../types";
-import { convertTime } from "../../../utils/convertTime";
+import { useContext, useState } from 'react';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { RiPlayListAddLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
+import { SongContext } from '../../../contexts/song';
+import { IArtist, ITrack } from '../../../types';
+import { convertTimeMilliseconds } from '../../../utils/convertTime';
 import {
   SongItemArtists,
   SongItemButtons,
@@ -12,7 +12,7 @@ import {
   SongItemLength,
   SongItemTitle,
   SongItemTrack,
-} from "./styles";
+} from './styles';
 
 export function SongItem(props: { song: ITrack; index: number }) {
   const [liked, setLiked] = useState<boolean>(false);
@@ -31,7 +31,7 @@ export function SongItem(props: { song: ITrack; index: number }) {
         </SongItemTitle>
         <SongItemArtists>
           {props.song.artists!.map((artist: IArtist, i: number) => [
-            i > 0 && ", ",
+            i > 0 && ', ',
             <Link to={`/artist/${artist.id}`} key={artist.id}>
               {artist.name}
             </Link>,
@@ -54,7 +54,9 @@ export function SongItem(props: { song: ITrack; index: number }) {
         )}
         <RiPlayListAddLine onClick={() => {}} />
       </SongItemButtons>
-      <SongItemLength>{convertTime(props.song.length)}</SongItemLength>
+      <SongItemLength>
+        {convertTimeMilliseconds(props.song.length)}
+      </SongItemLength>
     </SongItemContainer>
   );
 }

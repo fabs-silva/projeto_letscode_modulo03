@@ -1,19 +1,29 @@
-import { useEffect, useState } from "react";
-import { ITrack } from "../../../../types";
-import { PlayerProgressBarContainer } from "../styles";
+import { useEffect } from 'react';
+import { usePlayer } from '../../../../hooks/usePlayer';
+import { ITrack } from '../../../../types';
+import { PlayerProgressBarContainer } from '../styles';
 
 export function PlayerProgressBar(props: { song: ITrack; songRef: any }) {
-  const [songPercentage, setSongPercentage] = useState<number>(0);
+  const { videoControl, songProgress, updateSongProgress } = usePlayer(
+    props.songRef
+  );
 
-  useEffect(() => {}, [songPercentage]);
+  useEffect(() => {
+    let interval = setInterval(() => {
+      updateSongProgress();
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [songProgress]);
 
   return (
     <PlayerProgressBarContainer
       type="range"
       min="0"
-      max="100"
-      value={songPercentage}
-      onChange={(e) => setSongPercentage(parseFloat(e.target.value))}
+      step="1"
+      max={videoControl.previewLength}
+      value={songProgress}
+      onChange={updateSongProgress}
     />
   );
 }
