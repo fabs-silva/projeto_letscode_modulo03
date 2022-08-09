@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { RiHeartPulseLine } from "react-icons/ri";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { LoginWrapper } from "../../components/BlockComponents/LoginBlock";
+import {
+  LoginError,
+  LoginLink,
+  LoginLogo,
+  LoginWrapperContainer,
+} from "../../components/BlockComponents/LoginBlock/styles";
+import { Button } from "../../components/ElementComponents/Button";
 import { FormFieldset } from "../../components/ElementComponents/FormFieldset";
-import { IProfile } from "../../types";
+import { AuthContext } from "../../contexts/auth";
 
 const SignUpForm = styled.div`
   display: grid;
@@ -12,17 +20,21 @@ const SignUpForm = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
 `;
 
 export function SignUp() {
+  let navigate = useNavigate();
+  const { callbackLogin, isLoggedIn, login, loginPage, isLoginPage } =
+    useContext(AuthContext);
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
-  const [error, setError] = useState<IProfile | Error | null>(null);
+  const [error, setError] = useState<Error | null>(null);
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -38,10 +50,23 @@ export function SignUp() {
       setError(new Error("Please, fill all inputs before continue!"));
       return;
     }
+
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setImageUrl("");
+    setUsername("");
+    setPassword("");
+    navigate("/", { replace: true });
   };
 
   return (
-    <LoginWrapper error={error} onClick={handleSubmit} login={false}>
+    <LoginWrapperContainer>
+      <LoginLogo>
+        <RiHeartPulseLine />
+        ESCFy
+      </LoginLogo>
+      {callbackLogin && <LoginError>{callbackLogin.message}</LoginError>}
       <SignUpForm>
         <FormFieldset
           label="First Name"
@@ -86,6 +111,15 @@ export function SignUp() {
           setValue={(imageUrl: string) => setImageUrl(imageUrl)}
         />
       </SignUpForm>
-    </LoginWrapper>
+      <Button onClick={handleSubmit}>Sign Up</Button>
+      <LoginLink>
+        <p>
+          Already a member?{" "}
+          <Link to="/">
+            <strong>Sign in here!</strong>
+          </Link>
+        </p>
+      </LoginLink>
+    </LoginWrapperContainer>
   );
 }

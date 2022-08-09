@@ -1,10 +1,7 @@
-import { profile } from "../assets/mockups/profile";
-import { IProfile } from "../types";
-
 export const fakeLogin = (
   username: string,
   password: string,
-  callback: (cb: IProfile | Error | null) => void
+  callback: (cb: Error | null) => void
 ) =>
   setTimeout(() => {
     if (username.length === 0 || password.length === 0) {
@@ -15,5 +12,5 @@ export const fakeLogin = (
       return callback(new Error("Invalid username and/or password"));
     }
 
-    return callback(profile);
+    return callback(null);
   }, 1000);

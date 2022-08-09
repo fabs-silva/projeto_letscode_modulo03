@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import theme from '../../../styles/theme';
+import styled from "styled-components";
+import theme from "../../../styles/theme";
 
 const { colors, fonts } = theme;
 
 const LoginWrapperContainer = styled.form`
   min-width: 25rem;
-  max-height: 33rem;
+  max-height: 35rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,6 +24,7 @@ const LoginLogo = styled.div`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
 const LoginError = styled.p`

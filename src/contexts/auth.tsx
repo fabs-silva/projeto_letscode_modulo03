@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
-import { profile } from "../assets/mockups/profile";
+import { useNavigate } from "react-router-dom";
+import { fakeProfile } from "../assets/mockups/profile";
 import { IAuthContext, IProfile } from "../types";
 import { fakeLogin } from "../utils/fakeLogin";
 
@@ -12,9 +13,19 @@ type AuthProviderProps = {
 export const AuthProvider = ({ children, ...rest }: AuthProviderProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-  const [callbackLogin, setCallbackLogin] = useState<IProfile | Error | null>(
-    null
-  );
+  const [profile, setProfile] = useState<IProfile>({} as IProfile);
+  const [callbackLogin, setCallbackLogin] = useState<Error | null>(null);
+  const [isLoginPage, setIsLoginPage] = useState<boolean>(true);
+
+  const loginPage = (status: boolean) => {
+    let navigate = useNavigate();
+    if (status) {
+      setIsLoginPage(true);
+      navigate("/", { replace: false });
+    }
+    setIsLoginPage(false);
+    navigate("/sign-up", { replace: false });
+  };
 
   const login = (username: string, password: string) => {
     setLoading(true);
@@ -26,7 +37,7 @@ export const AuthProvider = ({ children, ...rest }: AuthProviderProps) => {
 
       if (!error) {
         setIsLoggedIn(true);
-        setCallbackLogin(profile);
+        setProfile(fakeProfile);
       } else {
         setCallbackLogin(error);
       }
@@ -36,12 +47,22 @@ export const AuthProvider = ({ children, ...rest }: AuthProviderProps) => {
   const logout = () => {
     setLoading(false);
     setIsLoggedIn(false);
+    setProfile({} as IProfile);
     setCallbackLogin(null);
   };
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, loading, callbackLogin, login, logout }}
+      value={{
+        isLoggedIn,
+        loading,
+        callbackLogin,
+        login,
+        logout,
+        profile,
+        loginPage,
+        isLoginPage,
+      }}
     >
       {children}
     </AuthContext.Provider>

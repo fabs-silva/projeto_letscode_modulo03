@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { profile } from "./assets/mockups/profile";
+import { fakeProfile } from "./assets/mockups/profile";
 import { LoginLayout } from "./components/LayoutComponents/LoginLayout";
 import { MainAppLayout } from "./components/LayoutComponents/MainAppLayout";
 import { NotFound } from "./pages/404";
@@ -14,24 +14,24 @@ export function RoutesComponent() {
     <>
       <Routes>
         <Route path="/" element={<LoginLayout />}>
-          <Route index element={<Login user={profile} />} />
-          <Route path="login" element={<Login user={profile} />} />
+          <Route index element={<Login />} />
+          <Route path="login" element={<Login />} />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="*" element={<NotFound />} />
         </Route>
-        <Route path="home" element={<MainAppLayout user={profile} />}>
+        <Route path="home" element={<MainAppLayout />}>
           <Route index element={<Home />} />
         </Route>
-        <Route path="playlist" element={<MainAppLayout user={profile} />}>
+        <Route path="playlist" element={<MainAppLayout />}>
           <Route path=":playlistId" element={<Playlist />} />
         </Route>
-        <Route path="album" element={<MainAppLayout user={profile} />}>
+        <Route path="album" element={<MainAppLayout />}>
           <Route path=":albumId" element={<Album />} />
         </Route>
-        <Route path="artist" element={<MainAppLayout user={profile} />}>
+        <Route path="artist" element={<MainAppLayout />}>
           <Route path=":artistId" element={<h1>Coming soon....</h1>} />
         </Route>
-        <Route path="search" element={<MainAppLayout user={profile} />}>
+        <Route path="search" element={<MainAppLayout />}>
           <Route index element={<h1>Coming soon....</h1>} />
         </Route>
       </Routes>

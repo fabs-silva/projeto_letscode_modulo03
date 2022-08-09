@@ -13,9 +13,12 @@ type IProfile = {
 type IAuthContext = {
   isLoggedIn: boolean;
   loading: boolean;
-  callbackLogin: IProfile | Error | null;
+  loginPage: (status: boolean) => void;
+  callbackLogin: Error | null;
   login: (username: string, password: string) => void;
   logout: () => void;
+  profile: IProfile;
+  isLoginPage: boolean;
 };
 
 type ICard = {

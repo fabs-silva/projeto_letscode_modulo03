@@ -1,6 +1,7 @@
+import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import { IProfile } from "../../../types";
+import { AuthContext } from "../../../contexts/auth";
 import { Header } from "../../BlockComponents/Header";
 import { Menu } from "../../BlockComponents/Menu";
 import { Player } from "../../BlockComponents/Player";
@@ -16,11 +17,12 @@ const MainAppContainer = styled.main`
     / 200px 1fr;
 `;
 
-export function MainAppLayout(props: { user: IProfile }) {
+export function MainAppLayout() {
+  const { profile } = useContext(AuthContext);
   return (
     <MainAppContainer>
       <Menu />
-      <Header user={props.user} />
+      <Header user={profile} />
       <Outlet />
       <Player />
     </MainAppContainer>

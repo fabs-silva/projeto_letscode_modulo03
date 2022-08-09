@@ -1,11 +1,29 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { LoginWrapper } from "../../components/BlockComponents/LoginBlock";
+import { RiHeartPulseLine } from "react-icons/ri";
+import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import {
+  LoginError,
+  LoginLink,
+  LoginLogo,
+  LoginWrapperContainer,
+} from "../../components/BlockComponents/LoginBlock/styles";
+import { Button } from "../../components/ElementComponents/Button";
 import { FormFieldset } from "../../components/ElementComponents/FormFieldset";
 import { AuthContext } from "../../contexts/auth";
-import { IProfile } from "../../types";
 
-export function Login(props: { user: IProfile }) {
+const LoginFormWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+`;
+
+export function Login() {
   let navigate = useNavigate();
   const { callbackLogin, isLoggedIn, login } = useContext(AuthContext);
   const [username, setUsername] = useState<string>("");
@@ -21,25 +39,37 @@ export function Login(props: { user: IProfile }) {
   };
 
   return (
-    <LoginWrapper
-      error={callbackLogin}
-      onClick={handleSubmit}
-      login={isLoggedIn}
-    >
-      <FormFieldset
-        label="Username"
-        placeholder="Username"
-        type="text"
-        value={username}
-        setValue={(username: string) => setUsername(username)}
-      />
-      <FormFieldset
-        label="Password"
-        placeholder="Password"
-        type="password"
-        value={password}
-        setValue={(password: string) => setPassword(password)}
-      />
-    </LoginWrapper>
+    <LoginWrapperContainer>
+      <LoginLogo>
+        <RiHeartPulseLine />
+        ESCFy
+      </LoginLogo>
+      {callbackLogin && <LoginError>{callbackLogin.message}</LoginError>}
+      <LoginFormWrapper>
+        <FormFieldset
+          label="Username"
+          placeholder="Username"
+          type="text"
+          value={username}
+          setValue={(username: string) => setUsername(username)}
+        />
+        <FormFieldset
+          label="Password"
+          placeholder="Password"
+          type="password"
+          value={password}
+          setValue={(password: string) => setPassword(password)}
+        />
+      </LoginFormWrapper>
+      <Button onClick={handleSubmit}>Login</Button>
+      <LoginLink>
+        <p>
+          Not a member?{" "}
+          <Link to="/sign-up">
+            <strong>Sign up here!</strong>
+          </Link>
+        </p>
+      </LoginLink>
+    </LoginWrapperContainer>
   );
 }

@@ -1,7 +1,7 @@
 import { IProfile } from "../../types";
 import profileImage from "../images/profile-pic.jpg";
 
-export const profile: IProfile = {
+export const fakeProfile: IProfile = {
   id: 1,
   username: "guest",
   firstName: "Guest",
