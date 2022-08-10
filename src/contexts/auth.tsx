@@ -1,8 +1,8 @@
-import { createContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { fakeProfile } from "../assets/mockups/profile";
-import { IAuthContext, IProfile } from "../types";
-import { fakeLogin } from "../utils/fakeLogin";
+import { createContext, useState } from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { fakeProfile } from '../assets/mockups/profile';
+import { IAuthContext, IProfile } from '../types';
+import { fakeLogin } from '../utils/fakeLogin';
 
 export const AuthContext = createContext({} as IAuthContext);
 
@@ -21,27 +21,31 @@ export const AuthProvider = ({ children, ...rest }: AuthProviderProps) => {
     let navigate = useNavigate();
     if (status) {
       setIsLoginPage(true);
-      navigate("/", { replace: false });
+      navigate('/', { replace: false });
     }
     setIsLoginPage(false);
-    navigate("/sign-up", { replace: false });
+    navigate('/sign-up', { replace: false });
   };
 
-  const login = (username: string, password: string) => {
+  const login = (
+    username: string,
+    password: string,
+    navigate: NavigateFunction
+  ) => {
     setLoading(true);
-    setIsLoggedIn(false);
     setCallbackLogin(null);
 
-    fakeLogin(username, password, (error) => {
-      setLoading(false);
+    const fakeLoginItem = fakeLogin(username, password);
 
-      if (!error) {
-        setIsLoggedIn(true);
-        setProfile(fakeProfile);
-      } else {
-        setCallbackLogin(error);
-      }
-    });
+    if (fakeLoginItem !== null) {
+      setCallbackLogin(fakeLoginItem);
+      return;
+    }
+
+    setIsLoggedIn(true);
+    setProfile(fakeProfile);
+    setLoading(false);
+    navigate('/home', { replace: true });
   };
 
   const logout = () => {
@@ -68,5 +72,3 @@ export const AuthProvider = ({ children, ...rest }: AuthProviderProps) => {
     </AuthContext.Provider>
   );
 };
-
-//https://codesandbox.io/embed/login-flow-w-react-context-api-p9j96

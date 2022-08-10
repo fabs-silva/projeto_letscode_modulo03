@@ -1,4 +1,5 @@
-import { IconType } from "react-icons";
+import { IconType } from 'react-icons';
+import { NavigateFunction } from 'react-router-dom';
 
 type IProfile = {
   id: number;
@@ -15,7 +16,11 @@ type IAuthContext = {
   loading: boolean;
   loginPage: (status: boolean) => void;
   callbackLogin: Error | null;
-  login: (username: string, password: string) => void;
+  login: (
+    username: string,
+    password: string,
+    navigate: NavigateFunction
+  ) => void;
   logout: () => void;
   profile: IProfile;
   isLoginPage: boolean;

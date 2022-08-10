@@ -1,16 +1,16 @@
-import { useContext, useState } from "react";
-import { RiHeartPulseLine } from "react-icons/ri";
-import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { useContext, useState } from 'react';
+import { RiHeartPulseLine } from 'react-icons/ri';
+import { Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import {
   LoginError,
   LoginLink,
   LoginLogo,
   LoginWrapperContainer,
-} from "../../components/BlockComponents/LoginBlock/styles";
-import { Button } from "../../components/ElementComponents/Button";
-import { FormFieldset } from "../../components/ElementComponents/FormFieldset";
-import { AuthContext } from "../../contexts/auth";
+} from '../../components/BlockComponents/LoginBlock/styles';
+import { Button } from '../../components/ElementComponents/Button';
+import { FormFieldset } from '../../components/ElementComponents/FormFieldset';
+import { AuthContext } from '../../contexts/auth';
 
 const LoginFormWrapper = styled.div`
   width: 100%;
@@ -24,18 +24,21 @@ const LoginFormWrapper = styled.div`
 `;
 
 export function Login() {
+  const { callbackLogin, login, loading } = useContext(AuthContext);
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
   let navigate = useNavigate();
-  const { callbackLogin, isLoggedIn, login } = useContext(AuthContext);
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    login(username, password);
-    setUsername("");
-    setPassword("");
-    navigate("/home", { replace: true });
+    login(username, password, navigate);
+
+    if (!loading) {
+      setUsername('');
+      setPassword('');
+    }
   };
 
   return (
@@ -64,7 +67,7 @@ export function Login() {
       <Button onClick={handleSubmit}>Login</Button>
       <LoginLink>
         <p>
-          Not a member?{" "}
+          Not a member?{' '}
           <Link to="/sign-up">
             <strong>Sign up here!</strong>
           </Link>
