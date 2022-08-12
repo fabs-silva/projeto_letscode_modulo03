@@ -1,23 +1,29 @@
 import axios from 'axios';
-import { getAuth } from './api';
+import { IAlbum } from '../types';
+import { getAuth } from './apiAuth';
 import { filterTracksList } from './apiTracks';
 
-const getAlbumData = async (albumData: SpotifyApi.SingleAlbumResponse) => {
-  const tracks = filterTracksList(albumData.tracks);
-  const artists = albumData.artists;
+const createNewAlbum = (result: any): IAlbum | null => {
+  const albumResponse = result.value;
 
+  if (!albumResponse) {
+    return null;
+  }
+
+  const tracks = filterTracksList(albumResponse.tracks);
+  const artists = albumResponse.artists;
   const newTrackList = tracks.map((track) => {
-    return { ...track, image: albumData.images[0].url };
+    return { ...track, image: albumResponse.images[0].url };
   });
 
   return {
-    id: albumData.id,
-    image: albumData.images[0].url,
-    title: albumData.name,
+    id: albumResponse.id,
+    image: albumResponse.images[0].url,
+    title: albumResponse.name,
     tracks: newTrackList,
-    totalTracks: albumData.tracks.total,
-    year: albumData.release_date,
-    type: albumData.album_type,
+    totalTracks: albumResponse.tracks.total,
+    year: albumResponse.release_date,
+    type: albumResponse.album_type,
     artists: artists.map((artist) => {
       return {
         id: artist.id,
@@ -27,21 +33,48 @@ const getAlbumData = async (albumData: SpotifyApi.SingleAlbumResponse) => {
   };
 };
 
-const getAlbum = async (album_id: string) => {
+const getAlbumResponse = async (album_id: string) => {
   const access_token = await getAuth();
 
   const api_url = `${import.meta.env.VITE_BASE_URL}/albums/${album_id}`;
-  const response = await axios.get(api_url, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
+  const response = await axios
+    .get(api_url, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    })
+    .then((resp) => {
+      return resp.data;
+    })
+    .catch((error: Error) => {
+      return error;
+    });
 
-  const albumData: SpotifyApi.SingleAlbumResponse = await response.data;
+  if (!response) {
+    return null;
+  }
 
-  const album = await getAlbumData(albumData);
-
-  return album;
+  return response;
 };
 
-export { getAlbum, getAlbumData };
+export const getAlbum = (album: SpotifyApi.AlbumObjectFull) => {
+  const albumPromise = getAlbumResponse(album.id);
+
+  if (!albumPromise) {
+    return null;
+  }
+
+  let newAlbum: IAlbum = {} as IAlbum;
+
+  Promise.resolve(albumPromise).then((result) => {
+    const createNew = createNewAlbum(result);
+
+    if (!createNew) {
+      return;
+    }
+
+    newAlbum = createNew;
+  });
+
+  return newAlbum;
+};

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getAuth } from './api';
+import { getAuth } from './apiAuth';
 
 const filterTracksPlaylist = (
   tracks: SpotifyApi.PagingObject<SpotifyApi.PlaylistTrackObject>
