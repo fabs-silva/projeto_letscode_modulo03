@@ -1,13 +1,13 @@
-import { Route, Routes } from "react-router-dom";
-import { fakeProfile } from "./assets/mockups/profile";
-import { LoginLayout } from "./components/LayoutComponents/LoginLayout";
-import { MainAppLayout } from "./components/LayoutComponents/MainAppLayout";
-import { NotFound } from "./pages/404";
-import { Album } from "./pages/Album";
-import { Home } from "./pages/Home";
-import { Login } from "./pages/Login";
-import { Playlist } from "./pages/Playlist";
-import { SignUp } from "./pages/SignUp";
+import { Route, Routes } from 'react-router-dom';
+import { fakeProfile } from '../assets/mocks/profile';
+import { LoginLayout } from '../components/LayoutComponents/LoginLayout';
+import { MainAppLayout } from '../components/LayoutComponents/MainAppLayout';
+import { NotFound } from '../pages/404';
+import { Album } from '../pages/Album';
+import { Home } from '../pages/Home';
+import { Login } from '../pages/Login';
+import { Playlist } from '../pages/Playlist';
+import { SignUp } from '../pages/SignUp';
 
 export function RoutesComponent() {
   return (

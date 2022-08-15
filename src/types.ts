@@ -1,5 +1,4 @@
 import { IconType } from 'react-icons';
-import { NavigateFunction } from 'react-router-dom';
 
 type IProfile = {
   id: number;
@@ -11,7 +10,7 @@ type IProfile = {
   email: string;
 };
 
-type IAuthContext = {
+/* type IAuthContext = {
   isLoggedIn: boolean;
   loading: boolean;
   loginPage: (status: boolean) => void;
@@ -24,25 +23,30 @@ type IAuthContext = {
   logout: () => void;
   profile: IProfile;
   isLoginPage: boolean;
-};
+};*/
 
 type ICard = {
-  id: number;
-  image: string;
-  title: string;
-  subtitle: string;
-  link: string;
-  type?: string;
-};
-
-type IPlaylist = {
   id: string;
   image: string;
   title: string;
-  owner: string;
-  tracks: ITrack[];
-  totalTracks: number;
-  icon?: IconType;
+  subtitle: string;
+  type?: string;
+};
+
+type IArtist = {
+  id: string;
+  name: string;
+  image?: string;
+};
+
+type ITrack = {
+  id: string;
+  title: string;
+  length: number;
+  song_url: string | null;
+  artists?: IArtist[];
+  track_number?: number;
+  image?: string;
 };
 
 type IAlbum = {
@@ -56,25 +60,19 @@ type IAlbum = {
   type: string;
 };
 
-type ITrack = {
+type IPlaylist = {
   id: string;
+  image: string;
   title: string;
-  length: number;
-  artists?: IArtist[];
-  track_number?: number;
-  song_url: string;
-  image?: string;
-};
-
-type IArtist = {
-  id: string;
-  name: string;
-  image?: string;
+  owner: string | undefined;
+  tracks: ITrack[];
+  totalTracks: number;
+  icon?: IconType;
 };
 
 export type {
   IProfile,
-  IAuthContext,
+  /*   IAuthContext, */
   ICard,
   IPlaylist,
   ITrack,

@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { fakeProfile } from '../assets/mockups/profile';
+import { fakeProfile } from '../assets/mocks/profile';
 import { IAuthContext, IProfile } from '../types';
 import { fakeLogin } from '../utils/fakeLogin';
 

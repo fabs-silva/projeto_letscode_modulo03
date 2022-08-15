@@ -1,8 +1,10 @@
-import styled from "styled-components";
-import { albumInformation, albumTracks } from "../../assets/albumTracks";
-import { MainArea } from "../../components/MainArea";
-import { MusicInfo } from "../../components/MusicItem/MusicInfo";
-import { MusicList } from "../../components/MusicItem/MusicList";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { MainArea } from '../../components/BlockComponents/MainArea';
+import { getAlbum } from '../../services/api-services/apiAlbums';
+import { IAlbum } from '../../types';
+import { AlbumItem } from './components/AlbumContent';
 
 const AlbumContainer = styled.div`
   display: grid;
@@ -15,11 +17,28 @@ const AlbumContainer = styled.div`
 `;
 
 export function Album() {
+  let { albumId } = useParams();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [album, setAlbum] = useState<IAlbum>({} as IAlbum);
+
+  async function getSingleAlbum() {
+    const albumResponse = await getAlbum(albumId!);
+
+    setAlbum(albumResponse);
+  }
+
+  useEffect(() => {
+    getSingleAlbum();
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, [album.id]);
+
   return (
-    <MainArea style={{ padding: "3rem 0" }}>
+    <MainArea style={{ padding: '3rem 0' }}>
       <AlbumContainer>
-        <MusicInfo musicItem={albumInformation} />
-        <MusicList tracks={albumTracks} />
+        {!isLoading && <AlbumItem album={album} />}
       </AlbumContainer>
     </MainArea>
   );

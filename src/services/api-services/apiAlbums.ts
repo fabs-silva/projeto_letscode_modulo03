@@ -1,7 +1,9 @@
-import axios from 'axios';
-import { IAlbum } from '../types';
-import { getAuth } from './apiAuth';
+import { IAlbum, IArtist, ITrack } from '../../types';
+import { getResponse } from './apiResponse';
+
 import { filterTracksList } from './apiTracks';
+
+const ALBUM_URL = `${import.meta.env.VITE_BASE_URL}/albums/`;
 
 const createNewAlbum = (result: any): IAlbum | null => {
   const albumResponse = result.value;
@@ -12,53 +14,31 @@ const createNewAlbum = (result: any): IAlbum | null => {
 
   const tracks = filterTracksList(albumResponse.tracks);
   const artists = albumResponse.artists;
-  const newTrackList = tracks.map((track) => {
+  const updatedTrackList: ITrack[] = tracks.map((track) => {
     return { ...track, image: albumResponse.images[0].url };
   });
 
-  return {
+  const newAlbum: IAlbum = {
     id: albumResponse.id,
     image: albumResponse.images[0].url,
     title: albumResponse.name,
-    tracks: newTrackList,
+    tracks: updatedTrackList,
     totalTracks: albumResponse.tracks.total,
     year: albumResponse.release_date,
     type: albumResponse.album_type,
-    artists: artists.map((artist) => {
+    artists: artists.map((artist: IArtist) => {
       return {
         id: artist.id,
         name: artist.name,
       };
     }),
   };
-};
 
-const getAlbumResponse = async (album_id: string) => {
-  const access_token = await getAuth();
-
-  const api_url = `${import.meta.env.VITE_BASE_URL}/albums/${album_id}`;
-  const response = await axios
-    .get(api_url, {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    })
-    .then((resp) => {
-      return resp.data;
-    })
-    .catch((error: Error) => {
-      return error;
-    });
-
-  if (!response) {
-    return null;
-  }
-
-  return response;
+  return newAlbum;
 };
 
 export const getAlbum = (album: SpotifyApi.AlbumObjectFull) => {
-  const albumPromise = getAlbumResponse(album.id);
+  const albumPromise = getResponse(`${ALBUM_URL}${album.id}`);
 
   if (!albumPromise) {
     return null;

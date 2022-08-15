@@ -1,12 +1,6 @@
-import { getArtistsList, getSingleArtist } from './apiArtists';
-import { getAuth } from './apiAuth';
-import { searchQuery } from './apiSearch';
-import { getArtistsList, getSingleArtist } from './apiArtists';
+import { getAlbum } from './api-services/apiAlbums';
+import { getArtistsList, getSingleArtist } from './api-services/apiArtists';
+import { getPlaylist } from './api-services/apiPlaylists';
+import { searchQuery } from './api-services/apiSearch';
 
-export {
-  getAuth,
-  searchQuery,
-  getArtistsList,
-  getSingleArtist,
-  getSingleAlbum,
-};
+export { searchQuery, getArtistsList, getSingleArtist, getAlbum, getPlaylist };

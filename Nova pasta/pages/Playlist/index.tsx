@@ -1,10 +1,12 @@
-import styled from "styled-components";
-import { playlistInformation, playlistTracks } from "../../assets/albumTracks";
-import { MainArea } from "../../components/MainArea";
-import { MusicInfo } from "../../components/MusicItem/MusicInfo";
-import { MusicList } from "../../components/MusicItem/MusicList";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { MainArea } from '../../components/BlockComponents/MainArea';
+import { getPlaylist } from '../../services/api-services/apiPlaylists';
+import { IPlaylist } from '../../types';
+import { PlaylistItem } from './components/PlaylistContent';
 
-const AlbumContainer = styled.div`
+const PlaylistContainer = styled.div`
   display: grid;
   grid-template-columns: 350px minmax(auto, 700px);
   grid-template-rows: 1fr auto;
@@ -15,12 +17,45 @@ const AlbumContainer = styled.div`
 `;
 
 export function Playlist() {
+  let { playlistId } = useParams();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [playlist, setPlaylist] = useState<IPlaylist>({} as IPlaylist);
+
+  async function getSinglePlaylist() {
+    const playlistResponse = await getPlaylist(playlistId!);
+
+    setPlaylist(playlistResponse);
+  }
+
+  useEffect(() => {
+    getSinglePlaylist();
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  }, [isLoading, playlist]);
+
   return (
-    <MainArea style={{ padding: "3rem 0" }}>
-      <AlbumContainer>
-        <MusicInfo musicItem={playlistInformation} />
-        <MusicList tracks={playlistTracks} />
-      </AlbumContainer>
+    <MainArea style={{ padding: '3rem 0' }}>
+      <PlaylistContainer>
+        {!isLoading && <PlaylistItem playlist={playlist} />}
+      </PlaylistContainer>
     </MainArea>
   );
 }
+
+/*  useEffect(() => {
+    async function getPlaylistResponse() {
+      const playlistResponse = await getPlaylist(playlistId!);
+      const tracks = filterTracksList(playlistResponse.tracks.items);
+      setPlaylist({
+        id: playlistResponse.id,
+        image: playlistResponse.images[0].url,
+        title: playlistResponse.name,
+        owner: playlistResponse.owner.display_name,
+        tracks: tracks,
+        totalTracks: playlistResponse.tracks.total,
+      });
+    }
+    getPlaylistResponse();
+    setIsLoading(false);
+  }, [playlist]); */

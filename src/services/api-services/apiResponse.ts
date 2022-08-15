@@ -33,4 +33,27 @@ const getAuth = async () => {
   }
 };
 
-export { getAuth };
+const getResponse = async (url: string) => {
+  const access_token = await getAuth();
+
+  const response = await axios
+    .get(url, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    })
+    .then((resp) => {
+      return resp.data;
+    })
+    .catch((error: Error) => {
+      return error;
+    });
+
+  if (!response) {
+    return null;
+  }
+
+  return response;
+};
+
+export { getResponse };

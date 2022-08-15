@@ -1,6 +1,7 @@
-import axios from 'axios';
-import { IArtist } from '../types';
-import { getAuth } from './api';
+import { IArtist } from '../../types';
+import { getResponse } from './apiResponse';
+
+const ARTIST_URL = `${import.meta.env.VITE_BASE_URL}/artists/`;
 
 const createNewArtist = (result: any): IArtist | null => {
   const artistResponse = result.value;
@@ -16,32 +17,8 @@ const createNewArtist = (result: any): IArtist | null => {
   };
 };
 
-const getArtistResponse = async (artist_id: string) => {
-  const access_token = await getAuth();
-
-  const api_url = `${import.meta.env.VITE_BASE_URL}/artist/${artist_id}`;
-  const response = await axios
-    .get(api_url, {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    })
-    .then((resp) => {
-      return resp.data;
-    })
-    .catch((error: Error) => {
-      return error;
-    });
-
-  if (!response) {
-    return null;
-  }
-
-  return response;
-};
-
 export const getSingleArtist = (artist: SpotifyApi.ArtistObjectFull) => {
-  const artistPromise = getArtistResponse(artist.id);
+  const artistPromise = getResponse(`${ARTIST_URL}${artist.id}`);
 
   if (!artistPromise) {
     return null;
@@ -65,7 +42,7 @@ export const getSingleArtist = (artist: SpotifyApi.ArtistObjectFull) => {
 export const getArtistsList = (artists: SpotifyApi.ArtistObjectFull[]) => {
   const artistsPromiseArray = artists.map(
     async (artist: SpotifyApi.ArtistObjectFull) => {
-      const artistData = await getArtistResponse(artist.id);
+      const artistData = await getResponse(`${ARTIST_URL}${artist.id}`);
       return artistData;
     }
   );
